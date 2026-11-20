@@ -197,12 +197,13 @@
 
       <!-- Links Rápidos (Desktop) -->
       <div
-        class="hidden md:flex items-center gap-1 bg-surfaceElevated/60 px-3 py-1.5 rounded-full border border-white/5 text-xs font-medium text-textSecondary">
+        class="hidden md:flex items-center gap-1 bg-surfaceElevated/60 px-3 py-1.5 rounded-full border border-white/5 text-xs font-light text-textSecondary">
+        <a href="#inicio"
+          class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Sobre Mim</a>
         <a href="#trabalhos"
           class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Trabalhos</a>
         <a href="#especialidades"
           class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Especialidades</a>
-        <a href="#sobre" class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Sobre</a>
         <a href="#contato" class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Contato</a>
       </div>
 
@@ -228,13 +229,13 @@
 
     <!-- Menu Dropdown Mobile -->
     <div id="mobile-menu"
-      class="hidden md:hidden mt-2 glass-nav rounded-2xl p-5 shadow-2xl flex flex-col gap-3 text-sm">
+      class="hidden md:hidden mt-2 glass-nav rounded-2xl p-5 shadow-2xl flex flex-col gap-3 text-sm font-light">
+      <a href="#inicio"
+        class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Sobre Mim</a>
       <a href="#trabalhos"
         class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Trabalhos</a>
       <a href="#especialidades"
         class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Especialidades</a>
-      <a href="#sobre"
-        class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Sobre Mim</a>
       <a href="#contato"
         class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Contato</a>
       <div class="pt-3 border-t border-white/10">
@@ -251,75 +252,238 @@
   <main class="relative z-10 pt-28 md:pt-36">
 
     <!-- ========================================== -->
-    <!-- 2. HERO SECTION                           -->
+    <!-- 2. INÍCIO: PERFIL & TRAJETÓRIA PROFISSIONAL -->
     <!-- ========================================== -->
-    <section id="inicio" class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 md:pt-16 md:pb-24">
+    <section id="inicio" class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-16 md:pt-10 md:pb-20">
 
       <!-- Status Badge -->
       <div
-        class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surfaceElevated border border-white/10 mb-6 shadow-sm">
+        class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surfaceElevated border border-white/10 mb-8 shadow-sm">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span class="text-xs font-mono font-medium tracking-wide text-textSecondary">
+        <span class="text-xs font-mono font-light tracking-wide text-textSecondary">
           Disponível para novos projetos, propostas & consultorias
         </span>
       </div>
 
-      <!-- Título de Alto Impacto -->
-      <div class="space-y-4 max-w-4xl">
-        <h1
-          class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white">
-          DESIGN VISUAL COM <br>
-          <span
-            class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#FF844B] to-amber-300">
-            RIGOR TÉCNICO
-          </span><br>
-          E VISÃO ESTRATÉGICA.
-        </h1>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
-        <p class="text-base sm:text-lg md:text-xl text-textSecondary max-w-2xl font-normal leading-relaxed pt-2">
-          Especialista em <strong class="text-white font-medium">Pré-Impressão & Grandes Formatos</strong>,
-          materiais visuais estratégicos para <strong class="text-white font-medium">Propostas Comerciais &
-            Licitações</strong>,
-          <strong class="text-white font-medium">Identidade Visual</strong> e campanhas de <strong
-            class="text-white font-medium">Marketing Digital</strong>.
-        </p>
-      </div>
+        <!-- Foto / Perfil do Designer -->
+        <div class="lg:col-span-5 relative group">
+          <div
+            class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden glass-card border border-white/10 group-hover:border-accent/40 transition-all duration-500 shadow-2xl">
+            <!-- Foto Real de Perfil -->
+            <img src="./assets/marcelo-perfil.webp"
+              alt="Marcelo Alves Mendonça - Designer Gráfico"
+              class="w-full h-full object-cover contrast-105 group-hover:scale-105 transition-all duration-700">
 
-      <!-- Botões de Ação Hero -->
-      <div class="flex flex-wrap items-center gap-4 pt-8">
-        <a href="#trabalhos"
-          class="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-bgDark font-semibold text-sm hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-glow-accent">
-          <span>Explorar Portfólio</span>
-          <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
-        </a>
+            <div class="absolute inset-0 bg-gradient-to-t from-bgDark via-bgDark/40 to-transparent"></div>
 
-        <a href="#contato"
-          class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-surfaceElevated border border-white/10 text-white font-medium text-sm hover:border-accent hover:text-accent transition-all duration-300">
-          <i data-lucide="message-square" class="w-4 h-4 text-accent"></i>
-          <span>Falar Diretamente Comigo</span>
-        </a>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span
+                class="inline-block px-3 py-1 rounded-full bg-accent/90 text-white text-[11px] font-mono font-light uppercase tracking-wider mb-2">
+                Designer Gráfico Sênior
+              </span>
+              <h2 class="font-display font-light text-2xl text-white tracking-wide">Marcelo Alves Mendonça</h2>
+              <p class="text-xs font-light text-textSecondary mt-1">Ribeirão das Neves - MG • 41 anos</p>
+            </div>
+          </div>
+
+          <!-- Badge flutuante de experiência -->
+          <div
+            class="absolute -bottom-5 -right-4 sm:-right-6 glass-card p-4 rounded-2xl border border-white/15 shadow-glow-accent flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="font-display font-light text-lg text-white">+18 Anos</div>
+              <div class="text-[10px] font-mono font-light text-textMuted uppercase">Design & Gráfica</div>
+            </div>
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="flex flex-wrap items-center gap-3 pt-10">
+            <a href="#trabalhos"
+              class="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-bgDark font-light text-xs uppercase tracking-wider hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-glow-accent">
+              <span>Ver Trabalhos</span>
+              <i data-lucide="arrow-down" class="w-3.5 h-3.5 group-hover:translate-y-1 transition-transform"></i>
+            </a>
+
+            <a href="#contato"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surfaceElevated border border-white/10 text-white font-light text-xs uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-300">
+              <i data-lucide="message-square" class="w-3.5 h-3.5 text-accent"></i>
+              <span>Contato Direto</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Biografia e Informações Profissionais -->
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-xs font-mono font-light uppercase tracking-widest text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            Trajetória Profissional
+          </span>
+
+          <h1 class="font-display font-light text-3xl sm:text-4xl text-white leading-tight tracking-wide">
+            Unindo o rigor técnico da produção gráfica à estratégia visual moderna.
+          </h1>
+
+          <div class="space-y-4 text-textSecondary text-sm sm:text-base font-light leading-relaxed">
+            <p>
+              Com mais de 18 anos de vivência no setor gráfico e de comunicação visual, sou especialista na criação de
+              artes para impressos, embalagens, sinalização e mídias digitais. Meu grande diferencial está no
+              conhecimento prático de todo o ciclo produtivo: desde a concepção do layout até a pré-impressão com rigor
+              técnico (imposição CTP, conversão em curvas, perfis CMYK e calibração de arquivos).
+            </p>
+            <p>
+              Atualmente atuo como Designer Gráfico no setor de licitações da Strata Engenharia, traduzindo processos complexos de editais e
+              concorrências em organogramas, fluxogramas e matrizes RACI de alto padrão visual. Também acumulo passagens
+              de destaque por empresas como Zap Gráfica Online (7 anos em controle de qualidade e chapas CTP), Sign end Sign
+              (comunicação visual e envelopamento automotivo) e Villefort Atacarejo (impressoras industriais Mimaki e ambientação).
+            </p>
+          </div>
+
+          <!-- Destaque de Formação Acadêmica & Certificações -->
+          <div class="pt-2">
+            <h3 class="text-xs font-mono font-light text-textMuted uppercase tracking-wider mb-3">
+              Formação & Especializações
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-light">
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-light text-white">Pós-Graduação em Inteligência Artificial & ML</div>
+                  <div class="text-[11px] text-textMuted font-light">Anhanguera (Conclusão 2026)</div>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="trending-up" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-light text-white">Marketing Digital</div>
+                  <div class="text-[11px] text-textMuted font-light">Anhanguera Educacional (2024)</div>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="file-check-2" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-light text-white">Pré-Impressão | Offset | Padronização PDF</div>
+                  <div class="text-[11px] text-textMuted font-light">SENAI-MG (2013)</div>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="box" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-light text-white">Animação 2D & Modelagem 3D</div>
+                  <div class="text-[11px] text-textMuted font-light">SAGA Escola de Design (2015)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ferramentas Dominadas -->
+          <div class="pt-4">
+            <h3 class="text-xs font-mono font-light text-textMuted uppercase tracking-wider mb-4">
+              Ferramentas & Tecnologias
+            </h3>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-light">
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#005A36]/40 border border-[#00A86B]/30 flex items-center justify-center text-[#00E676] font-display font-light text-xs">
+                  Cdr
+                </div>
+                <div>
+                  <div class="text-xs font-light text-white">CorelDRAW</div>
+                  <div class="text-[10px] text-accent font-light">Avançado • 18+ anos</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#001D34]/60 border border-[#31A8FF]/30 flex items-center justify-center text-[#31A8FF] font-display font-light text-xs">
+                  Ps
+                </div>
+                <div>
+                  <div class="text-xs font-light text-white">Photoshop</div>
+                  <div class="text-[10px] text-accent font-light">Avançado</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#330000]/60 border border-[#FF9A00]/30 flex items-center justify-center text-[#FF9A00] font-display font-light text-xs">
+                  Ai
+                </div>
+                <div>
+                  <div class="text-xs font-light text-white">Illustrator</div>
+                  <div class="text-[10px] text-accent font-light">Avançado</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#300018]/60 border border-[#FF3366]/30 flex items-center justify-center text-[#FF3366] font-display font-light text-xs">
+                  Pr
+                </div>
+                <div>
+                  <div class="text-xs font-light text-white">Premiere</div>
+                  <div class="text-[10px] text-accent font-light">Avançado • Vídeo</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#300018]/60 border border-[#FF3366]/30 flex items-center justify-center text-[#FF3366] font-display font-light text-xs">
+                  Id
+                </div>
+                <div>
+                  <div class="text-xs font-light text-white">InDesign</div>
+                  <div class="text-[10px] text-textMuted font-light">Editorial & Decks</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#00005C]/60 border border-[#9999FF]/30 flex items-center justify-center text-[#9999FF] font-display font-light text-xs">
+                  Ae
+                </div>
+                <div>
+                  <div class="text-xs font-light text-white">After Effects</div>
+                  <div class="text-[10px] text-textMuted font-light">Motion & Animação</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
       <!-- Faixa de Destaques / Métricas Bento -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 pt-16 md:pt-20">
         <div class="glass-card p-4 sm:p-5 rounded-2xl">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">+18 Anos</div>
-          <p class="text-xs font-mono text-textMuted uppercase mt-1">Experiência no Mercado</p>
+          <div class="font-display font-light text-2xl sm:text-3xl text-white">+18 Anos</div>
+          <p class="text-xs font-mono font-light text-textMuted uppercase mt-1">Experiência no Mercado</p>
         </div>
         <div class="glass-card p-4 sm:p-5 rounded-2xl">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-accent">Offset & Digital</div>
-          <p class="text-xs font-mono text-textMuted uppercase mt-1">Pré-impressão & CTP</p>
+          <div class="font-display font-light text-2xl sm:text-3xl text-accent">Offset & Digital</div>
+          <p class="text-xs font-mono font-light text-textMuted uppercase mt-1">Pré-impressão & CTP</p>
         </div>
         <div class="glass-card p-4 sm:p-5 rounded-2xl">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">100%</div>
-          <p class="text-xs font-mono text-textMuted uppercase mt-1">Fidelidade & Curvas</p>
+          <div class="font-display font-light text-2xl sm:text-3xl text-white">100%</div>
+          <p class="text-xs font-mono font-light text-textMuted uppercase mt-1">Fidelidade & Curvas</p>
         </div>
         <div class="glass-card p-4 sm:p-5 rounded-2xl">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">360°</div>
-          <p class="text-xs font-mono text-textMuted uppercase mt-1">Da Criação à Máquina</p>
+          <div class="font-display font-light text-2xl sm:text-3xl text-white">360°</div>
+          <p class="text-xs font-mono font-light text-textMuted uppercase mt-1">Da Criação à Máquina</p>
         </div>
       </div>
     </section>
@@ -546,197 +710,7 @@
       </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- 5. SEÇÃO SOBRE MIM (COMPACTA & ELEGANTE)   -->
-    <!-- ========================================== -->
-    <section id="sobre" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-white/5">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-        <!-- Foto / Visual do Designer -->
-        <div class="lg:col-span-5 relative group">
-          <div
-            class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden glass-card border border-white/10 group-hover:border-accent/50 transition-all duration-500 shadow-2xl">
-            <!-- Foto Real de Perfil -->
-            <img src="./assets/marcelo-perfil.webp"
-              alt="Marcelo Alves Mendonça - Designer Gráfico"
-              class="w-full h-full object-cover contrast-105 group-hover:scale-105 transition-all duration-700">
-
-            <div class="absolute inset-0 bg-gradient-to-t from-bgDark via-bgDark/40 to-transparent"></div>
-
-            <div class="absolute bottom-6 left-6 right-6">
-              <span
-                class="inline-block px-3 py-1 rounded-full bg-accent/90 text-white text-[11px] font-mono uppercase tracking-wider mb-2">
-                Designer Gráfico Sênior
-              </span>
-              <h4 class="font-display font-bold text-2xl text-white">Marcelo Alves Mendonça</h4>
-              <p class="text-xs text-textSecondary mt-1">Ribeirão das Neves - MG • 41 anos</p>
-            </div>
-          </div>
-
-          <!-- Badge flutuante de experiência -->
-          <div
-            class="absolute -bottom-5 -right-4 sm:-right-6 glass-card p-4 rounded-2xl border border-white/15 shadow-glow-accent flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white">
-              <i data-lucide="award" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="font-display font-extrabold text-lg text-white">+18 Anos</div>
-              <div class="text-[10px] font-mono text-textMuted uppercase">Design & Gráfica</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Biografia e Stack de Ferramentas -->
-        <div class="lg:col-span-7 space-y-6">
-          <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-accent"></span>
-            Trajetória Profissional
-          </span>
-
-          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white leading-tight">
-            Unindo o rigor técnico da produção gráfica à estratégia visual moderna.
-          </h2>
-
-          <div class="space-y-4 text-textSecondary text-sm sm:text-base leading-relaxed">
-            <p>
-              Com mais de 18 anos de vivência no setor gráfico e de comunicação visual, sou especialista na criação de
-              artes para impressos, embalagens, sinalização e mídias digitais. Meu grande diferencial está no
-              conhecimento prático de todo o ciclo produtivo: desde a concepção do layout até a pré-impressão com rigor
-              técnico (imposição CTP, conversão em curvas, perfis CMYK e calibração de arquivos).
-            </p>
-            <p>
-              Atualmente atuo como Designer Gráfico no setor de licitações da <strong
-                class="text-white font-medium">Strata Engenharia</strong>, traduzindo processos complexos de editais e
-              concorrências em organogramas, fluxogramas e matrizes RACI de alto padrão visual. Também acumulo passagens
-              de destaque por empresas como <strong class="text-white font-medium">Zap Gráfica Online</strong> (7 anos
-              em controle de qualidade e chapas CTP), <strong class="text-white font-medium">Sign end Sign</strong>
-              (comunicação visual e envelopamento automotivo) e <strong class="text-white font-medium">Villefort
-                Atacarejo</strong> (impressoras industriais Mimaki e ambientação).
-            </p>
-          </div>
-
-          <!-- Destaque de Formação Acadêmica & Certificações -->
-          <div class="pt-2">
-            <h3 class="text-xs font-mono text-textMuted uppercase tracking-wider mb-3">
-              Formação & Especializações
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
-                <i data-lucide="graduation-cap" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
-                <div>
-                  <div class="font-semibold text-white">Pós-Graduação em Inteligência Artificial & ML</div>
-                  <div class="text-[11px] text-textMuted">Anhanguera (Conclusão 2026)</div>
-                </div>
-              </div>
-              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
-                <i data-lucide="trending-up" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
-                <div>
-                  <div class="font-semibold text-white">Marketing Digital</div>
-                  <div class="text-[11px] text-textMuted">Anhanguera Educacional (2024)</div>
-                </div>
-              </div>
-              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
-                <i data-lucide="file-check-2" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
-                <div>
-                  <div class="font-semibold text-white">Pré-Impressão | Offset | Padronização PDF</div>
-                  <div class="text-[11px] text-textMuted">SENAI-MG (2013)</div>
-                </div>
-              </div>
-              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
-                <i data-lucide="box" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
-                <div>
-                  <div class="font-semibold text-white">Animação 2D & Modelagem 3D</div>
-                  <div class="text-[11px] text-textMuted">SAGA Escola de Design (2015)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ferramentas Dominadas -->
-          <div class="pt-4">
-            <h3 class="text-xs font-mono text-textMuted uppercase tracking-wider mb-4">
-              Ferramentas & Tecnologias
-            </h3>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <div
-                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
-                <div
-                  class="w-8 h-8 rounded-lg bg-[#005A36]/40 border border-[#00A86B]/30 flex items-center justify-center text-[#00E676] font-display font-bold text-xs">
-                  Cdr
-                </div>
-                <div>
-                  <div class="text-xs font-semibold text-white">CorelDRAW</div>
-                  <div class="text-[10px] text-accent font-medium">Avançado • 18+ anos</div>
-                </div>
-              </div>
-
-              <div
-                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
-                <div
-                  class="w-8 h-8 rounded-lg bg-[#001D34]/60 border border-[#31A8FF]/30 flex items-center justify-center text-[#31A8FF] font-display font-bold text-xs">
-                  Ps
-                </div>
-                <div>
-                  <div class="text-xs font-semibold text-white">Photoshop</div>
-                  <div class="text-[10px] text-accent font-medium">Avançado</div>
-                </div>
-              </div>
-
-              <div
-                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
-                <div
-                  class="w-8 h-8 rounded-lg bg-[#330000]/60 border border-[#FF9A00]/30 flex items-center justify-center text-[#FF9A00] font-display font-bold text-xs">
-                  Ai
-                </div>
-                <div>
-                  <div class="text-xs font-semibold text-white">Illustrator</div>
-                  <div class="text-[10px] text-accent font-medium">Avançado</div>
-                </div>
-              </div>
-
-              <div
-                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
-                <div
-                  class="w-8 h-8 rounded-lg bg-[#300018]/60 border border-[#FF3366]/30 flex items-center justify-center text-[#FF3366] font-display font-bold text-xs">
-                  Pr
-                </div>
-                <div>
-                  <div class="text-xs font-semibold text-white">Premiere</div>
-                  <div class="text-[10px] text-accent font-medium">Avançado • Vídeo</div>
-                </div>
-              </div>
-
-              <div
-                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
-                <div
-                  class="w-8 h-8 rounded-lg bg-[#300018]/60 border border-[#FF3366]/30 flex items-center justify-center text-[#FF3366] font-display font-bold text-xs">
-                  Id
-                </div>
-                <div>
-                  <div class="text-xs font-semibold text-white">InDesign</div>
-                  <div class="text-[10px] text-textMuted">Editorial & Decks</div>
-                </div>
-              </div>
-
-              <div
-                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
-                <div
-                  class="w-8 h-8 rounded-lg bg-[#00005C]/60 border border-[#9999FF]/30 flex items-center justify-center text-[#9999FF] font-display font-bold text-xs">
-                  Ae
-                </div>
-                <div>
-                  <div class="text-xs font-semibold text-white">After Effects</div>
-                  <div class="text-[10px] text-textMuted">Motion & Animação</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
 
     <!-- ========================================== -->
     <!-- 6. RODAPÉ & CONTATO DIRETO                 -->
