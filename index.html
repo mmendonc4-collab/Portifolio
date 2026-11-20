@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcelo Alves Mendonça — Designer Gráfico & Comunicação Visual | Portfólio</title>
+  <meta name="description"
+    content="Portfólio de Marcelo Alves Mendonça: Design Gráfico, Pré-impressão, Identidade Visual, Comunicação Visual de Grande Porte, Materiais Comerciais e Marketing Digital. Ribeirão das Neves - MG.">
+
+  <!-- Google Fonts: Cormorant Garamond, Encode Sans Expanded, IBM Plex Sans Thai Looped, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Sans+Thai+Looped:wght@100;200;300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bgDark: '#0A0A0A',
+            surfaceDark: '#121214',
+            surfaceElevated: '#18181B',
+            surfaceBorder: 'rgba(255, 255, 255, 0.08)',
+            accent: {
+              DEFAULT: '#FF5E1A', // Laranja Queimado / Vibrante
+              hover: '#FF7A3D',
+              subtle: 'rgba(255, 94, 26, 0.12)',
+              glow: 'rgba(255, 94, 26, 0.35)',
+            },
+            electricBlue: '#3B82F6',
+            textPrimary: '#FFFFFF',
+            textSecondary: '#A1A1AA',
+            textMuted: '#71717A',
+          },
+          fontFamily: {
+            display: ['Encode Sans Expanded', 'sans-serif'],
+            expanded: ['Encode Sans Expanded', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+            mono: ['IBM Plex Sans Thai Looped', 'sans-serif'],
+            looped: ['IBM Plex Sans Thai Looped', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-accent': '0 0 35px -5px rgba(255, 94, 26, 0.35)',
+            'glow-card': '0 10px 40px -10px rgba(0, 0, 0, 0.7)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos Customizados e Micro-interações */
+    ::selection {
+      background-color: #FF5E1A;
+      color: #0A0A0A;
+    }
+
+    /* Scrollbar estilizada em Dark Mode */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #27272A;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF5E1A;
+    }
+
+    /* Grid arquitetônico de fundo sutil */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Brilho radial ambiente */
+    .radial-glow-top {
+      background: radial-gradient(circle 600px at 50% -10%, rgba(255, 94, 26, 0.15), transparent 70%);
+    }
+
+    .radial-glow-accent {
+      background: radial-gradient(circle 500px at 85% 20%, rgba(255, 94, 26, 0.1), transparent 60%);
+    }
+
+    /* Efeito Glassmorphism refinado */
+    .glass-nav {
+      background: rgba(18, 18, 20, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card {
+      background: rgba(18, 18, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .glass-modal {
+      background: rgba(14, 14, 16, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Cursor de luz sutil no desktop */
+    #cursor-light {
+      pointer-events: none;
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 94, 26, 0.06) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Transição suave de cards do filtro */
+    .gallery-item {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item.hidden-filter {
+      display: none;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-bgDark text-textPrimary font-sans antialiased overflow-x-hidden selection:bg-accent selection:text-white relative min-h-screen">
+
+  <!-- Luz ambiente de fundo que acompanha o cursor (somente desktop) -->
+  <div id="cursor-light" class="hidden md:block"></div>
+
+  <!-- Background Grids e Gradientes -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+  <div class="fixed inset-0 radial-glow-top pointer-events-none z-0"></div>
+  <div class="fixed inset-0 radial-glow-accent pointer-events-none z-0"></div>
+
+  <!-- ========================================== -->
+  <!-- 1. NAVBAR FLUTUANTE (GLASSMORPHISM)        -->
+  <!-- ========================================== -->
+  <header class="fixed top-4 md:top-6 inset-x-0 mx-auto max-w-5xl z-50 px-4">
+    <nav
+      class="glass-nav rounded-full px-5 py-3 md:px-6 md:py-3.5 flex items-center justify-between shadow-glass transition-all duration-300">
+
+      <!-- Logotipo / Nome do Designer -->
+      <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+        <div
+          class="w-9 h-9 rounded-full bg-surfaceElevated border border-white/10 flex items-center justify-center font-display font-extrabold text-sm tracking-wider text-accent group-hover:border-accent group-hover:shadow-[0_0_15px_rgba(255,94,26,0.5)] transition-all">
+          MM
+        </div>
+        <div class="flex flex-col">
+          <span
+            class="font-display font-bold text-sm tracking-tight text-white group-hover:text-accent transition-colors">
+            MARCELO A. MENDONÇA
+          </span>
+          <span class="text-[10px] uppercase font-mono tracking-wider text-textMuted -mt-0.5">
+            Design Gráfico & Pré-Impressão
+          </span>
+        </div>
+      </a>
+
+      <!-- Links Rápidos (Desktop) -->
+      <div
+        class="hidden md:flex items-center gap-1 bg-surfaceElevated/60 px-3 py-1.5 rounded-full border border-white/5 text-xs font-medium text-textSecondary">
+        <a href="#trabalhos"
+          class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Trabalhos</a>
+        <a href="#especialidades"
+          class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Especialidades</a>
+        <a href="#sobre" class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Sobre</a>
+        <a href="#contato" class="px-4 py-1.5 rounded-full hover:text-white hover:bg-white/5 transition-all">Contato</a>
+      </div>
+
+      <!-- Botão de Ação / CTA -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="https://wa.me/5531987357432?text=Ol%C3%A1%20Marcelo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+          target="_blank" rel="noopener noreferrer"
+          class="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-glow-accent hover:shadow-[0_0_25px_rgba(255,94,26,0.6)] hover:scale-105 active:scale-95">
+          <span>Falar no WhatsApp</span>
+          <i data-lucide="arrow-up-right"
+            class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+        </a>
+      </div>
+
+      <!-- Botão Menu Mobile -->
+      <button id="mobile-menu-btn"
+        class="md:hidden text-textSecondary hover:text-white p-1.5 rounded-lg focus:outline-none"
+        aria-label="Abrir Menu">
+        <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5"></i>
+        <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+      </button>
+    </nav>
+
+    <!-- Menu Dropdown Mobile -->
+    <div id="mobile-menu"
+      class="hidden md:hidden mt-2 glass-nav rounded-2xl p-5 shadow-2xl flex flex-col gap-3 text-sm">
+      <a href="#trabalhos"
+        class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Trabalhos</a>
+      <a href="#especialidades"
+        class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Especialidades</a>
+      <a href="#sobre"
+        class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Sobre Mim</a>
+      <a href="#contato"
+        class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 text-textSecondary hover:text-white">Contato</a>
+      <div class="pt-3 border-t border-white/10">
+        <a href="https://wa.me/5531987357432?text=Ol%C3%A1%20Marcelo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+          target="_blank"
+          class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-accent text-white font-medium text-xs uppercase tracking-wider shadow-glow-accent">
+          <span>Falar no WhatsApp</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-28 md:pt-36">
+
+    <!-- ========================================== -->
+    <!-- 2. HERO SECTION                           -->
+    <!-- ========================================== -->
+    <section id="inicio" class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 md:pt-16 md:pb-24">
+
+      <!-- Status Badge -->
+      <div
+        class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surfaceElevated border border-white/10 mb-6 shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span class="text-xs font-mono font-medium tracking-wide text-textSecondary">
+          Disponível para novos projetos, propostas & consultorias
+        </span>
+      </div>
+
+      <!-- Título de Alto Impacto -->
+      <div class="space-y-4 max-w-4xl">
+        <h1
+          class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white">
+          DESIGN VISUAL COM <br>
+          <span
+            class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#FF844B] to-amber-300">
+            RIGOR TÉCNICO
+          </span><br>
+          E VISÃO ESTRATÉGICA.
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-xl text-textSecondary max-w-2xl font-normal leading-relaxed pt-2">
+          Especialista em <strong class="text-white font-medium">Pré-Impressão & Grandes Formatos</strong>,
+          materiais visuais estratégicos para <strong class="text-white font-medium">Propostas Comerciais &
+            Licitações</strong>,
+          <strong class="text-white font-medium">Identidade Visual</strong> e campanhas de <strong
+            class="text-white font-medium">Marketing Digital</strong>.
+        </p>
+      </div>
+
+      <!-- Botões de Ação Hero -->
+      <div class="flex flex-wrap items-center gap-4 pt-8">
+        <a href="#trabalhos"
+          class="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-bgDark font-semibold text-sm hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-glow-accent">
+          <span>Explorar Portfólio</span>
+          <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+        </a>
+
+        <a href="#contato"
+          class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-surfaceElevated border border-white/10 text-white font-medium text-sm hover:border-accent hover:text-accent transition-all duration-300">
+          <i data-lucide="message-square" class="w-4 h-4 text-accent"></i>
+          <span>Falar Diretamente Comigo</span>
+        </a>
+      </div>
+
+      <!-- Faixa de Destaques / Métricas Bento -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 pt-16 md:pt-20">
+        <div class="glass-card p-4 sm:p-5 rounded-2xl">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">+18 Anos</div>
+          <p class="text-xs font-mono text-textMuted uppercase mt-1">Experiência no Mercado</p>
+        </div>
+        <div class="glass-card p-4 sm:p-5 rounded-2xl">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-accent">Offset & Digital</div>
+          <p class="text-xs font-mono text-textMuted uppercase mt-1">Pré-impressão & CTP</p>
+        </div>
+        <div class="glass-card p-4 sm:p-5 rounded-2xl">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">100%</div>
+          <p class="text-xs font-mono text-textMuted uppercase mt-1">Fidelidade & Curvas</p>
+        </div>
+        <div class="glass-card p-4 sm:p-5 rounded-2xl">
+          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">360°</div>
+          <p class="text-xs font-mono text-textMuted uppercase mt-1">Da Criação à Máquina</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. GALERIA DE PROJETOS (O CORAÇÃO DO SITE) -->
+    <!-- ========================================== -->
+    <section id="trabalhos" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+
+      <!-- Cabeçalho da Seção -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            Galeria Curada
+          </span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mt-2">
+            Trabalhos em Destaque
+          </h2>
+          <p class="text-textSecondary text-sm sm:text-base mt-2 max-w-xl">
+            Navegue pelos projetos visuais. Clique em qualquer arte para abrir a visualização detalhada em tela cheia
+            com especificações de criação.
+          </p>
+        </div>
+
+        <div class="text-xs font-mono text-textMuted hidden md:block">
+          Exibindo <span id="project-count" class="text-white font-bold">14</span> criações visuais
+        </div>
+      </div>
+
+      <!-- Barra de Filtros Interativa (Pills com animação) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 pt-1 mb-8 no-scrollbar scroll-smooth">
+        <button
+          class="filter-btn active px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 bg-accent text-white shadow-glow-accent cursor-pointer whitespace-nowrap"
+          data-filter="all">
+          Todos <span class="ml-1 opacity-80">(14)</span>
+        </button>
+        <button
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          data-filter="identidade-visual">
+          Identidade Visual <span class="ml-1 text-textMuted">(4)</span>
+        </button>
+        <button
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          data-filter="social-media">
+          Social Media <span class="ml-1 text-textMuted">(4)</span>
+        </button>
+        <button
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          data-filter="impressos">
+          Impressos & Sinalização <span class="ml-1 text-textMuted">(3)</span>
+        </button>
+        <button
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          data-filter="apresentacoes">
+          Infográficos & Propostas <span class="ml-1 text-textMuted">(3)</span>
+        </button>
+      </div>
+
+      <!-- Masonry Grid Assimétrico Responsivo -->
+      <!-- Usa colunas CSS para suportar naturalmente proporções 1:1, 4:5, 9:16 e 16:9 sem cortes indesejados -->
+      <div id="gallery-container" class="columns-1 sm:columns-2 lg:columns-3 xl:columns-3 gap-6 space-y-6">
+        <!-- Os cards são gerados dinamicamente via JS a partir do array PROJECTS_DATA para máxima facilidade de manutenção -->
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. SEÇÃO DE ESPECIALIDADES / SERVIÇOS      -->
+    <!-- ========================================== -->
+    <section id="especialidades" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-white/5">
+      <div class="mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          Soluções Visuais
+        </span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mt-2">
+          Especialidades & Entregas
+        </h2>
+        <p class="text-textSecondary text-sm sm:text-base mt-2 max-w-xl">
+          Atuação completa que une sensibilidade artística contemporânea ao rigor técnico de produção digital e gráfica.
+        </p>
+      </div>
+
+      <!-- Bento Grid de Serviços -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+
+        <!-- Card 1: Identidade Visual e Materiais Comerciais (Span 7) -->
+        <div
+          class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
+          <div
+            class="absolute -right-10 -bottom-10 w-44 h-44 bg-accent/10 rounded-full blur-3xl pointer-events-none group-hover:bg-accent/20 transition-all">
+          </div>
+          <div>
+            <div
+              class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
+              <i data-lucide="palette" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono text-accent uppercase tracking-wider">Marcas & Propostas Técnicas</span>
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1 mb-3">
+              Identidade Visual & Suporte a Propostas Comerciais
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+              Desenvolvimento de marcas memoráveis, manuais e materiais gráficos estratégicos para licitações e
+              concorrências. Criação de organogramas, fluxogramas e matrizes RACI que traduzem dados complexos em peças
+              visuais claras e de alto impacto.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Identidade
+              & Branding</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Propostas
+              para Licitações</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Fluxogramas
+              & Matrizes RACI</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Vetores
+              (.CDR, .AI)</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Marketing Digital & Tráfego Pago (Span 5) -->
+        <div
+          class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
+          <div
+            class="absolute -right-10 -top-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl pointer-events-none group-hover:bg-accent/20 transition-all">
+          </div>
+          <div>
+            <div
+              class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
+              <i data-lucide="layers" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono text-accent uppercase tracking-wider">Marketing Digital & Ads</span>
+            <h3 class="font-display font-bold text-2xl text-white mt-1 mb-3">
+              Mídias Digitais, Carrosséis & Anúncios
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+              Peças visuais e campanhas completas para redes sociais com estratégia de funil de vendas, copywriting
+              persuasivo e gerenciamento de tráfego pago (Google Ads, Facebook e Instagram).
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Google
+              Ads & Meta Ads</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Carrosséis
+              Narrativos</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Copywriting
+              & Funil</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Comunicação Visual, Mimaki & Pré-Impressão (Span 5) -->
+        <div
+          class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
+          <div>
+            <div
+              class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
+              <i data-lucide="printer" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono text-accent uppercase tracking-wider">Pré-Impressão & Grandes Formatos</span>
+            <h3 class="font-display font-bold text-2xl text-white mt-1 mb-3">
+              Pré-Impressão, Mimaki & Sinalização
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+              Ampla vivência em chão de fábrica gráfica e comunicação visual: operação de impressoras Mimaki, montagem
+              de grades CTP, fechamento em curvas, perfis CMYK, envelopamento automotivo e acabamentos especiais.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Pré-Impressão
+              & CTP</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Banners
+              Mimaki & Lonas</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Envelopamento
+              Automotivo</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Rigor
+              CMYK & Curvas</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Vídeo, Motion & Diagramação (Span 7) -->
+        <div
+          class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group hover:border-accent/40 transition-all duration-300 relative overflow-hidden">
+          <div
+            class="absolute -left-10 -bottom-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl pointer-events-none group-hover:bg-accent/20 transition-all">
+          </div>
+          <div>
+            <div
+              class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
+              <i data-lucide="video" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono text-accent uppercase tracking-wider">Audiovisual & Diagramação</span>
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1 mb-3">
+              Edição de Vídeo, Motion & Apresentações Técnicas
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+              Produção audiovisual completa com Premiere, After Effects e CapCut para comerciais e mídias sociais.
+              Diagramação técnica de documentos, catálogos e relatórios no InDesign para apresentações executivas.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Premiere
+              & After Effects</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Animação
+              & Motion</span>
+            <span
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">InDesign
+              Editorial</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 5. SEÇÃO SOBRE MIM (COMPACTA & ELEGANTE)   -->
+    <!-- ========================================== -->
+    <section id="sobre" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-white/5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+        <!-- Foto / Visual do Designer -->
+        <div class="lg:col-span-5 relative group">
+          <div
+            class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden glass-card border border-white/10 group-hover:border-accent/50 transition-all duration-500 shadow-2xl">
+            <!-- Foto Real de Perfil -->
+            <img src="./assets/marcelo-perfil.webp"
+              alt="Marcelo Alves Mendonça - Designer Gráfico"
+              class="w-full h-full object-cover contrast-105 group-hover:scale-105 transition-all duration-700">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-bgDark via-bgDark/40 to-transparent"></div>
+
+            <div class="absolute bottom-6 left-6 right-6">
+              <span
+                class="inline-block px-3 py-1 rounded-full bg-accent/90 text-white text-[11px] font-mono uppercase tracking-wider mb-2">
+                Designer Gráfico Sênior
+              </span>
+              <h4 class="font-display font-bold text-2xl text-white">Marcelo Alves Mendonça</h4>
+              <p class="text-xs text-textSecondary mt-1">Ribeirão das Neves - MG • 41 anos</p>
+            </div>
+          </div>
+
+          <!-- Badge flutuante de experiência -->
+          <div
+            class="absolute -bottom-5 -right-4 sm:-right-6 glass-card p-4 rounded-2xl border border-white/15 shadow-glow-accent flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="font-display font-extrabold text-lg text-white">+18 Anos</div>
+              <div class="text-[10px] font-mono text-textMuted uppercase">Design & Gráfica</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biografia e Stack de Ferramentas -->
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            Trajetória Profissional
+          </span>
+
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white leading-tight">
+            Unindo o rigor técnico da produção gráfica à estratégia visual moderna.
+          </h2>
+
+          <div class="space-y-4 text-textSecondary text-sm sm:text-base leading-relaxed">
+            <p>
+              Com mais de 18 anos de vivência no setor gráfico e de comunicação visual, sou especialista na criação de
+              artes para impressos, embalagens, sinalização e mídias digitais. Meu grande diferencial está no
+              conhecimento prático de todo o ciclo produtivo: desde a concepção do layout até a pré-impressão com rigor
+              técnico (imposição CTP, conversão em curvas, perfis CMYK e calibração de arquivos).
+            </p>
+            <p>
+              Atualmente atuo como Designer Gráfico no setor de licitações da <strong
+                class="text-white font-medium">Strata Engenharia</strong>, traduzindo processos complexos de editais e
+              concorrências em organogramas, fluxogramas e matrizes RACI de alto padrão visual. Também acumulo passagens
+              de destaque por empresas como <strong class="text-white font-medium">Zap Gráfica Online</strong> (7 anos
+              em controle de qualidade e chapas CTP), <strong class="text-white font-medium">Sign end Sign</strong>
+              (comunicação visual e envelopamento automotivo) e <strong class="text-white font-medium">Villefort
+                Atacarejo</strong> (impressoras industriais Mimaki e ambientação).
+            </p>
+          </div>
+
+          <!-- Destaque de Formação Acadêmica & Certificações -->
+          <div class="pt-2">
+            <h3 class="text-xs font-mono text-textMuted uppercase tracking-wider mb-3">
+              Formação & Especializações
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-white">Pós-Graduação em Inteligência Artificial & ML</div>
+                  <div class="text-[11px] text-textMuted">Anhanguera (Conclusão 2026)</div>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="trending-up" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-white">Marketing Digital</div>
+                  <div class="text-[11px] text-textMuted">Anhanguera Educacional (2024)</div>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="file-check-2" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-white">Pré-Impressão | Offset | Padronização PDF</div>
+                  <div class="text-[11px] text-textMuted">SENAI-MG (2013)</div>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-surfaceElevated/60 border border-white/5 flex items-start gap-2.5">
+                <i data-lucide="box" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-white">Animação 2D & Modelagem 3D</div>
+                  <div class="text-[11px] text-textMuted">SAGA Escola de Design (2015)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ferramentas Dominadas -->
+          <div class="pt-4">
+            <h3 class="text-xs font-mono text-textMuted uppercase tracking-wider mb-4">
+              Ferramentas & Tecnologias
+            </h3>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#005A36]/40 border border-[#00A86B]/30 flex items-center justify-center text-[#00E676] font-display font-bold text-xs">
+                  Cdr
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">CorelDRAW</div>
+                  <div class="text-[10px] text-accent font-medium">Avançado • 18+ anos</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#001D34]/60 border border-[#31A8FF]/30 flex items-center justify-center text-[#31A8FF] font-display font-bold text-xs">
+                  Ps
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">Photoshop</div>
+                  <div class="text-[10px] text-accent font-medium">Avançado</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#330000]/60 border border-[#FF9A00]/30 flex items-center justify-center text-[#FF9A00] font-display font-bold text-xs">
+                  Ai
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">Illustrator</div>
+                  <div class="text-[10px] text-accent font-medium">Avançado</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#300018]/60 border border-[#FF3366]/30 flex items-center justify-center text-[#FF3366] font-display font-bold text-xs">
+                  Pr
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">Premiere</div>
+                  <div class="text-[10px] text-accent font-medium">Avançado • Vídeo</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#300018]/60 border border-[#FF3366]/30 flex items-center justify-center text-[#FF3366] font-display font-bold text-xs">
+                  Id
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">InDesign</div>
+                  <div class="text-[10px] text-textMuted">Editorial & Decks</div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-surfaceElevated/70 border border-white/5 hover:border-accent/40 transition-colors">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[#00005C]/60 border border-[#9999FF]/30 flex items-center justify-center text-[#9999FF] font-display font-bold text-xs">
+                  Ae
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">After Effects</div>
+                  <div class="text-[10px] text-textMuted">Motion & Animação</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. RODAPÉ & CONTATO DIRETO                 -->
+    <!-- ========================================== -->
+    <section id="contato" class="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div
+        class="relative glass-card rounded-3xl p-8 sm:p-12 md:p-16 border border-white/10 overflow-hidden shadow-2xl">
+
+        <!-- Elemento de luz de fundo -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-accent/20 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto text-center space-y-6">
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-wider">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            Vamos trabalhar juntos?
+          </span>
+
+          <h2
+            class="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
+            Pronto para tirar o seu projeto do papel?
+          </h2>
+
+          <p class="text-textSecondary text-base sm:text-lg max-w-xl mx-auto">
+            Seja para criar sua identidade visual, desenvolver materiais gráficos para licitações e concorrências, ou
+            produzir campanhas e impressos de alto padrão, estou à disposição.
+          </p>
+
+          <!-- Cards Rápidos de Contato Direto -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 pb-2 text-left">
+            <div class="p-4 rounded-2xl bg-surfaceElevated/70 border border-white/5 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono uppercase text-textMuted">WhatsApp / Celular</div>
+                <div class="text-xs font-semibold text-white truncate">+55 (31) 98735-7432</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-surfaceElevated/70 border border-white/5 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono uppercase text-textMuted">E-mail Direto</div>
+                <div class="text-xs font-semibold text-white truncate">celo.mendonca01@gmail.com</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-surfaceElevated/70 border border-white/5 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono uppercase text-textMuted">Localização</div>
+                <div class="text-xs font-semibold text-white truncate">Ribeirão das Neves - MG</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões de Contato Primários -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+
+            <!-- Botão Direto para WhatsApp -->
+            <a href="https://wa.me/5531987357432?text=Ol%C3%A1%20Marcelo!%20Gostaria%20de%20conversar%20sobre%20um%20novo%20projeto%20de%20design."
+              target="_blank" rel="noopener noreferrer"
+              class="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-accent hover:bg-accent-hover text-white font-semibold text-sm tracking-wide transition-all duration-300 shadow-glow-accent hover:scale-105 active:scale-95">
+              <i data-lucide="message-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+              <span>Conversar pelo WhatsApp</span>
+            </a>
+
+            <!-- Botão Copiar E-mail -->
+            <button id="copy-email-btn" data-email="celo.mendonca01@gmail.com"
+              class="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-surfaceElevated border border-white/10 hover:border-accent text-white font-medium text-sm transition-all duration-300 relative">
+              <i data-lucide="copy" id="copy-icon"
+                class="w-4 h-4 text-textSecondary group-hover:text-accent transition-colors"></i>
+              <span id="copy-text">Copiar E-mail</span>
+              <!-- Tooltip de feedback -->
+              <span id="copy-tooltip"
+                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-accent text-white text-[11px] font-mono px-3 py-1 rounded-md opacity-0 pointer-events-none transition-all duration-200">
+                Copiado com sucesso!
+              </span>
+            </button>
+
+          </div>
+
+          <!-- Redes Sociais & Links Externos -->
+          <div class="pt-8 flex items-center justify-center gap-4">
+            <a href="https://behance.net" target="_blank" rel="noopener noreferrer"
+              class="w-11 h-11 rounded-full bg-surfaceElevated border border-white/5 hover:border-accent hover:text-accent flex items-center justify-center text-textSecondary transition-all"
+              title="Behance">
+              <i data-lucide="globe" class="w-5 h-5"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+              class="w-11 h-11 rounded-full bg-surfaceElevated border border-white/5 hover:border-accent hover:text-accent flex items-center justify-center text-textSecondary transition-all"
+              title="Instagram">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="w-11 h-11 rounded-full bg-surfaceElevated border border-white/5 hover:border-accent hover:text-accent flex items-center justify-center text-textSecondary transition-all"
+              title="LinkedIn">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer"
+              class="w-11 h-11 rounded-full bg-surfaceElevated border border-white/5 hover:border-accent hover:text-accent flex items-center justify-center text-textSecondary transition-all"
+              title="Dribbble">
+              <i data-lucide="dribbble" class="w-5 h-5"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 7. FOOTER MÍNIMO                           -->
+  <!-- ========================================== -->
+  <footer class="border-t border-white/5 py-8 text-center text-xs text-textMuted font-mono">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © <span id="current-year">2026</span> Marcelo Alves Mendonça. Todos os direitos reservados.
+      </div>
+      <div class="flex items-center gap-2">
+        <span>Design Gráfico & Produção Visual • Ribeirão das Neves - MG</span>
+        <button id="back-to-top"
+          class="ml-4 text-textSecondary hover:text-accent flex items-center gap-1 transition-colors">
+          <span>Topo</span>
+          <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================= -->
+  <!-- 8. MODAL LIGHTBOX EM TELA CHEIA (COM NAVEGAÇÃO & DETALHES) -->
+  <!-- ======================================================= -->
+  <div id="project-modal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center p-3 sm:p-6 md:p-8 transition-opacity duration-300">
+
+    <!-- Backdrop com blur escuro -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/90 backdrop-blur-xl"></div>
+
+    <!-- Container do Conteúdo do Modal -->
+    <div
+      class="relative z-10 w-full max-w-6xl max-h-[94vh] glass-modal rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-white/10">
+
+      <!-- Botão Fechar Modal -->
+      <button id="modal-close-btn"
+        class="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-black/60 hover:bg-accent text-white flex items-center justify-center border border-white/10 hover:border-accent transition-all duration-200"
+        aria-label="Fechar Modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Botões de Navegação Anterior/Próximo (Flutuantes) -->
+      <button id="modal-prev-btn"
+        class="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/60 hover:bg-accent text-white flex items-center justify-center border border-white/10 hover:border-accent transition-all duration-200"
+        aria-label="Projeto Anterior">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+      <button id="modal-next-btn"
+        class="absolute right-3 top-1/2 -translate-y-1/2 lg:right-[36%] z-30 w-11 h-11 rounded-full bg-black/60 hover:bg-accent text-white flex items-center justify-center border border-white/10 hover:border-accent transition-all duration-200"
+        aria-label="Próximo Projeto">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Lado Esquerdo: Imagem em Alta Resolução -->
+      <div
+        class="relative w-full lg:w-[65%] bg-black/80 flex items-center justify-center p-4 sm:p-8 min-h-[320px] lg:min-h-[580px] overflow-hidden">
+        <img id="modal-image" src="" alt="Visualização do Projeto"
+          class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl transition-all duration-300">
+      </div>
+
+      <!-- Lado Direito: Painel de Informações Técnicas -->
+      <div
+        class="w-full lg:w-[35%] p-6 sm:p-8 flex flex-col justify-between bg-surfaceElevated/95 overflow-y-auto max-h-[45vh] lg:max-h-[85vh]">
+
+        <div class="space-y-6">
+          <!-- Topo do Card com Contador e Categoria -->
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <span id="modal-category"
+              class="px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs uppercase tracking-wider">
+              Categoria
+            </span>
+            <span id="modal-counter" class="text-xs font-mono text-textMuted">
+              01 / 12
+            </span>
+          </div>
+
+          <!-- Título e Cliente -->
+          <div>
+            <h3 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white">
+              Nome do Projeto
+            </h3>
+            <div class="flex items-center gap-3 text-xs text-textSecondary font-mono mt-1">
+              <span id="modal-client">Cliente</span>
+              <span>•</span>
+              <span id="modal-year">2024</span>
+            </div>
+          </div>
+
+          <!-- Descrição do Desafio / Solução -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-mono uppercase tracking-wider text-textMuted">O Desafio & Solução Visual:</h4>
+            <p id="modal-description" class="text-textSecondary text-sm leading-relaxed">
+              Descrição detalhada do projeto...
+            </p>
+          </div>
+
+          <!-- Ferramentas Utilizadas -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-mono uppercase tracking-wider text-textMuted">Ferramentas Utilizadas:</h4>
+            <div id="modal-tools" class="flex flex-wrap gap-2 pt-1">
+              <!-- Inseridas dinamicamente via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão CTA dentro do modal -->
+        <div class="pt-6 border-t border-white/10 mt-6">
+          <a id="modal-cta-btn" href="#" target="_blank"
+            class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-bold uppercase tracking-wider shadow-glow-accent transition-all">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Solicitar Projeto Similar</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ======================================================= -->
+  <!-- JAVASCRIPT: DADOS DOS PROJETOS & FUNCIONALIDADES        -->
+  <!-- ======================================================= -->
+  <script>
+    /**
+     * =======================================================
+     * BASE DE DADOS DOS PROJETOS DO PORTFÓLIO
+     * 
+     * INSTRUÇÕES PARA O DESIGNER:
+     * Para substituir as imagens de exemplo pelas suas artes reais:
+     * 1. Coloque seus arquivos (ex: .jpg, .png, .webp) em uma pasta 'assets/'
+     * 2. Altere o campo 'image' para o caminho local (ex: './assets/meu-projeto.jpg')
+     * 3. Personalize títulos, categorias, clientes e ferramentas à vontade!
+     * =======================================================
+     */
+    const PROJECTS_DATA = [
+      {
+        id: 1,
+        title: "Proposta Comercial & Técnica — DER-MG (Capa Executiva)",
+        category: "apresentacoes",
+        categoryLabel: "Propostas & Editais",
+        aspect: "aspect-[4/5]",
+        image: "./assets/proposta-der-mg-capa1.jpg",
+        client: "Strata Engenharia / DER-MG",
+        year: "2025",
+        description: "Desenvolvimento de capa e projeto gráfico para proposta técnica em licitação pública de infraestrutura viária do DER-MG. Rigor visual, composição editorial e alinhamento às exigências de editais de engenharia.",
+        tools: ["InDesign", "Illustrator", "Photoshop"]
+      },
+      {
+        id: 2,
+        title: "Kings Burguer — Campanha Gastronômica & Feed",
+        category: "social-media",
+        categoryLabel: "Social Media",
+        aspect: "aspect-square",
+        image: "./assets/social-kings-burguer.jpg",
+        client: "Kings Burguer Oficial",
+        year: "2024",
+        description: "Direção de arte e peça publicitária de alto apelo visual para redes sociais. Tratamento avançado de imagem, composição cromática contrastante e foco em retenção e apetite appeal.",
+        tools: ["Photoshop", "Illustrator"]
+      },
+      {
+        id: 3,
+        title: "Fujiyama Restaurante — Painel de Grande Formato",
+        category: "impressos",
+        categoryLabel: "Impressos & Sinalização",
+        aspect: "aspect-[16/9]",
+        image: "./assets/sinalizacao-fujiyama-painel.jpg",
+        client: "Fujiyama Culinária Oriental",
+        year: "2024",
+        description: "Projeto de comunicação visual ambiental e painel decorativo interno de grande porte (3,12m x 2,02m). Fechamento rigoroso em curvas, calibração CMYK e especificações técnicas para impressão em alta resolução.",
+        tools: ["CorelDRAW", "Photoshop", "Mimaki"]
+      },
+      {
+        id: 4,
+        title: "Identidade Visual & Branding — IZA",
+        category: "identidade-visual",
+        categoryLabel: "Identidade Visual",
+        aspect: "aspect-[4/5]",
+        image: "./assets/logo-iza-01.jpg",
+        client: "IZA Cosméticos & Estética",
+        year: "2024",
+        description: "Criação de logotipo minimalista, símbolo gráfico e manual de aplicação de marca. Tipografia refinada e paleta cromática contemporânea para posicionamento premium.",
+        tools: ["Illustrator", "Photoshop", "CorelDRAW"]
+      },
+      {
+        id: 5,
+        title: "Line Music — Campanha Educativa & Captação",
+        category: "social-media",
+        categoryLabel: "Social Media",
+        aspect: "aspect-square",
+        image: "./assets/social-line-music.jpg",
+        client: "Line Escola de Música",
+        year: "2024",
+        description: "Comunicação visual e peças de feed voltadas para captação de novos alunos de instrumentos musicais. Composição limpa com elementos vetoriais e chamada para ação estratégica.",
+        tools: ["Photoshop", "Illustrator"]
+      },
+      {
+        id: 6,
+        title: "Flyer Promocional 4x4 — Mockup & Produção Gráfica",
+        category: "impressos",
+        categoryLabel: "Impressos & Sinalização",
+        aspect: "aspect-square",
+        image: "./assets/impresso-flyer-mockup.jpg",
+        client: "Comunicação Gráfica Promocional",
+        year: "2024",
+        description: "Criação e fechamento de flyer frente e verso (4x4 cores) com verniz localizado. Rigor técnico em pré-impressão: montagem de grades, sangrias, marcas de corte e conversão total para curvas.",
+        tools: ["CorelDRAW", "Photoshop", "CTP"]
+      },
+      {
+        id: 7,
+        title: "Strata Engenharia — Documento Técnico DER-MG",
+        category: "apresentacoes",
+        categoryLabel: "Propostas & Editais",
+        aspect: "aspect-[4/5]",
+        image: "./assets/proposta-der-mg-capa6.jpg",
+        client: "Strata Engenharia",
+        year: "2025",
+        description: "Padronização visual e diagramação executiva de relatório técnico para concorrência pública. Tradução de especificações de engenharia em identidade gráfica institucional de alto impacto.",
+        tools: ["InDesign", "Illustrator"]
+      },
+      {
+        id: 8,
+        title: "Line Music — Stories & Status Interativos (9:16)",
+        category: "social-media",
+        categoryLabel: "Social Media",
+        aspect: "aspect-[9/16]",
+        image: "./assets/storie-line-music.jpg",
+        client: "Line Escola de Música",
+        year: "2024",
+        description: "Série de layouts verticais (9:16) para Stories do Instagram e WhatsApp Status. Estruturação pensada para engajamento rápido e interação com enquetes e links diretos.",
+        tools: ["Photoshop", "After Effects"]
+      },
+      {
+        id: 9,
+        title: "Fujiyama Restaurante — Fachada & Testeira Comercial",
+        category: "impressos",
+        categoryLabel: "Impressos & Sinalização",
+        aspect: "aspect-[16/9]",
+        image: "./assets/sinalizacao-fujiyama-fachada.jpg",
+        client: "Fujiyama",
+        year: "2024",
+        description: "Comunicação visual externa em grande escala (3,50m x 0,70m) para fachada de restaurante. Lona backlight resistente com resolução calibrada e arte finalizada em CorelDRAW para produção física.",
+        tools: ["CorelDRAW", "Photoshop"]
+      },
+      {
+        id: 10,
+        title: "Aplicação de Marca & Papelaria Corporativa — IZA",
+        category: "identidade-visual",
+        categoryLabel: "Identidade Visual",
+        aspect: "aspect-square",
+        image: "./assets/logo-iza-aplicacao.jpg",
+        client: "IZA Cosméticos & Estética",
+        year: "2024",
+        description: "Estudo de aplicação de marca em papelaria, embalagens e materiais institucionais. Diretrizes de área de proteção, redução mínima e contraste sobre fundos escuros.",
+        tools: ["Illustrator", "Photoshop"]
+      },
+      {
+        id: 11,
+        title: "Campanha Promocional Happy Hour — Fujiyama",
+        category: "social-media",
+        categoryLabel: "Social Media",
+        aspect: "aspect-square",
+        image: "./assets/social-happy-hour-fujiyama.jpg",
+        client: "Fujiyama Culinária Oriental",
+        year: "2024",
+        description: "Criativo para redes sociais promovendo o Happy Hour. Tratamento de cor especial em tons quentes e composição para gerar conversão e atração de clientes.",
+        tools: ["Photoshop", "Illustrator"]
+      },
+      {
+        id: 12,
+        title: "Manual & Projeto de Sinalização Rodoviária — DER-MG",
+        category: "apresentacoes",
+        categoryLabel: "Propostas & Editais",
+        aspect: "aspect-[4/5]",
+        image: "./assets/proposta-der-mg-capa9.jpg",
+        client: "Strata Engenharia / DER-MG",
+        year: "2025",
+        description: "Diagramação de memorial descritivo e proposta executiva de engenharia. Organização de matrizes RACI, organogramas operacionais e mapas temáticos de execução.",
+        tools: ["InDesign", "Illustrator", "CorelDRAW"]
+      },
+      {
+        id: 13,
+        title: "Identidade Visual — Sorveteria Premium",
+        category: "identidade-visual",
+        categoryLabel: "Identidade Visual",
+        aspect: "aspect-square",
+        image: "./assets/logo-sorveteria.png",
+        client: "Sorveteria Premium",
+        year: "2024",
+        description: "Design de símbolo vetorial e logotipo estilizado para franquia de sorvetes artesanais. Cores vibrantes e excelente aplicabilidade em embalagens e fachadas.",
+        tools: ["Illustrator", "CorelDRAW"]
+      },
+      {
+        id: 14,
+        title: "Identidade Visual & Assinatura — Roberta",
+        category: "identidade-visual",
+        categoryLabel: "Identidade Visual",
+        aspect: "aspect-square",
+        image: "./assets/logo-roberta.png",
+        client: "Roberta Personal Branding",
+        year: "2024",
+        description: "Branding pessoal elegante com monograma fluído, formas orgânicas e assinatura visual sofisticada para consultoria e posicionamento profissional.",
+        tools: ["Illustrator", "Photoshop"]
+      }
+    ];
+
+    // Variáveis de Estado
+    let currentFilteredProjects = [...PROJECTS_DATA];
+    let currentModalIndex = 0;
+
+    // Inicialização ao carregar a página
+    document.addEventListener("DOMContentLoaded", () => {
+      // Inicializar ícones Lucide
+      lucide.createIcons();
+
+      // Renderizar galeria
+      renderGallery(PROJECTS_DATA);
+
+      // Configurar ouvintes de eventos
+      setupFilters();
+      setupModal();
+      setupEmailCopy();
+      setupMobileMenu();
+      setupCursorSpotlight();
+      setupBackToTop();
+    });
+
+    /**
+     * Renderiza os cards na galeria com suporte ao layout Masonry
+     */
+    function renderGallery(projects) {
+      const container = document.getElementById("gallery-container");
+      container.innerHTML = "";
+
+      if (projects.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-textMuted font-mono">
+            Nenhum projeto encontrado nesta categoria.
+          </div>
+        `;
+        return;
+      }
+
+      projects.forEach((proj, index) => {
+        const card = document.createElement("div");
+        card.className = `gallery-item break-inside-avoid mb-6 group relative rounded-2xl overflow-hidden glass-card border border-white/10 hover:border-accent/60 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-glow-accent`;
+        card.dataset.category = proj.category;
+        card.dataset.id = proj.id;
+
+        // Tags das ferramentas
+        const toolsHtml = proj.tools
+          .map(t => `<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-black/60 text-white/90 border border-white/10">${t}</span>`)
+          .join("");
+
+        card.innerHTML = `
+          <!-- Imagem com Proporção Natural e Zoom Suave -->
+          <div class="relative w-full ${proj.aspect} overflow-hidden bg-surfaceDark">
+            <img src="${proj.image}" 
+                 alt="${proj.title}" 
+                 loading="lazy" 
+                 class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+            
+            <!-- Gradiente de Sobreposição -->
+            <div class="absolute inset-0 bg-gradient-to-t from-bgDark/95 via-bgDark/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300"></div>
+
+            <!-- Botão Flutuante de Expansão (Aparece no Hover) -->
+            <div class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-75 transition-all duration-300 hover:bg-accent hover:border-accent">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+            </div>
+
+            <!-- Informações no Card -->
+            <div class="absolute bottom-0 inset-x-0 p-5 flex flex-col justify-end">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-accent font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                  ${proj.categoryLabel}
+                </span>
+                <span class="text-[11px] font-mono text-textMuted">${proj.year}</span>
+              </div>
+
+              <h3 class="font-display font-bold text-lg sm:text-xl text-white group-hover:text-accent transition-colors line-clamp-2">
+                ${proj.title}
+              </h3>
+
+              <p class="text-xs text-textSecondary font-sans mt-1 line-clamp-1">
+                ${proj.client}
+              </p>
+
+              <!-- Tags das Ferramentas (Micro-interação de reveal) -->
+              <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/10 opacity-80 group-hover:opacity-100 transition-opacity">
+                ${toolsHtml}
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Abrir Modal ao Clicar
+        card.addEventListener("click", () => {
+          openModal(proj.id);
+        });
+
+        container.appendChild(card);
+      });
+
+      // Recria ícones Lucide nos novos elementos inseridos
+      lucide.createIcons();
+
+      // Atualiza o contador de projetos
+      const countEl = document.getElementById("project-count");
+      if (countEl) countEl.textContent = projects.length;
+    }
+
+    /**
+     * Configura a barra de filtros interativa
+     */
+    function setupFilters() {
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          // Atualiza estilos dos botões de filtro
+          filterButtons.forEach(b => {
+            b.classList.remove("active", "bg-accent", "text-white", "shadow-glow-accent");
+            b.classList.add("bg-surfaceElevated", "border-white/5", "text-textSecondary");
+          });
+
+          btn.classList.add("active", "bg-accent", "text-white", "shadow-glow-accent");
+          btn.classList.remove("bg-surfaceElevated", "border-white/5", "text-textSecondary");
+
+          const filterValue = btn.dataset.filter;
+
+          if (filterValue === "all") {
+            currentFilteredProjects = [...PROJECTS_DATA];
+          } else {
+            currentFilteredProjects = PROJECTS_DATA.filter(p => p.category === filterValue);
+          }
+
+          // Animação de transição da galeria
+          const container = document.getElementById("gallery-container");
+          container.style.opacity = "0";
+          container.style.transform = "translateY(10px)";
+
+          setTimeout(() => {
+            renderGallery(currentFilteredProjects);
+            container.style.transition = "all 0.3s ease-out";
+            container.style.opacity = "1";
+            container.style.transform = "translateY(0)";
+          }, 150);
+        });
+      });
+    }
+
+    /**
+     * Sistema de Modal / Lightbox em Tela Cheia
+     */
+    function setupModal() {
+      const modal = document.getElementById("project-modal");
+      const backdrop = document.getElementById("modal-backdrop");
+      const closeBtn = document.getElementById("modal-close-btn");
+      const prevBtn = document.getElementById("modal-prev-btn");
+      const nextBtn = document.getElementById("modal-next-btn");
+
+      // Fechar ao clicar no backdrop ou botão X
+      backdrop.addEventListener("click", closeModal);
+      closeBtn.addEventListener("click", closeModal);
+
+      // Navegação Anterior e Próximo
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navigateModal(-1);
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navigateModal(1);
+      });
+
+      // Navegação por Teclado (Esc, Setas Esquerda/Direita)
+      window.addEventListener("keydown", (e) => {
+        if (modal.classList.contains("hidden")) return;
+
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft") navigateModal(-1);
+        if (e.key === "ArrowRight") navigateModal(1);
+      });
+    }
+
+    function openModal(projectId) {
+      const index = currentFilteredProjects.findIndex(p => p.id === projectId);
+      if (index === -1) return;
+
+      currentModalIndex = index;
+      updateModalContent();
+
+      const modal = document.getElementById("project-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden"; // Trava scroll da página de fundo
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("project-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = ""; // Restaura scroll
+    }
+
+    function navigateModal(direction) {
+      currentModalIndex += direction;
+
+      // Loop infinito entre os itens filtrados
+      if (currentModalIndex < 0) {
+        currentModalIndex = currentFilteredProjects.length - 1;
+      } else if (currentModalIndex >= currentFilteredProjects.length) {
+        currentModalIndex = 0;
+      }
+
+      updateModalContent();
+    }
+
+    function updateModalContent() {
+      const proj = currentFilteredProjects[currentModalIndex];
+      if (!proj) return;
+
+      const img = document.getElementById("modal-image");
+      const title = document.getElementById("modal-title");
+      const category = document.getElementById("modal-category");
+      const client = document.getElementById("modal-client");
+      const year = document.getElementById("modal-year");
+      const desc = document.getElementById("modal-description");
+      const tools = document.getElementById("modal-tools");
+      const counter = document.getElementById("modal-counter");
+      const ctaBtn = document.getElementById("modal-cta-btn");
+
+      // Transição suave na imagem
+      img.style.opacity = "0";
+      setTimeout(() => {
+        img.src = proj.image;
+        img.alt = proj.title;
+        img.style.opacity = "1";
+      }, 150);
+
+      title.textContent = proj.title;
+      category.textContent = proj.categoryLabel;
+      client.textContent = `Cliente: ${proj.client}`;
+      year.textContent = proj.year;
+      desc.textContent = proj.description;
+      counter.textContent = `${String(currentModalIndex + 1).padStart(2, '0')} / ${String(currentFilteredProjects.length).padStart(2, '0')}`;
+
+      // Monta tags de ferramentas
+      tools.innerHTML = proj.tools.map(tool => `
+        <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          ${tool}
+        </span>
+      `).join("");
+
+      // Configura o botão do WhatsApp com mensagem contextualizada do projeto
+      const msg = encodeURIComponent(`Olá Marcelo! Vi o projeto "${proj.title}" no seu portfólio e gostaria de um orçamento para algo similar.`);
+      ctaBtn.href = `https://wa.me/5531987357432?text=${msg}`;
+    }
+
+    /**
+     * Copiar E-mail com 1 Clique e Feedback Visual
+     */
+    function setupEmailCopy() {
+      const copyBtn = document.getElementById("copy-email-btn");
+      const copyTooltip = document.getElementById("copy-tooltip");
+      const copyText = document.getElementById("copy-text");
+      const copyIcon = document.getElementById("copy-icon");
+
+      if (!copyBtn) return;
+
+      copyBtn.addEventListener("click", () => {
+        const email = copyBtn.dataset.email || "celo.mendonca01@gmail.com";
+
+        navigator.clipboard.writeText(email).then(() => {
+          // Exibe tooltip de sucesso
+          copyTooltip.classList.remove("opacity-0");
+          copyTooltip.classList.add("opacity-100", "-top-12");
+
+          copyText.textContent = "E-mail Copiado!";
+          copyBtn.classList.add("border-emerald-500", "text-emerald-400");
+
+          setTimeout(() => {
+            copyTooltip.classList.add("opacity-0");
+            copyTooltip.classList.remove("opacity-100", "-top-12");
+            copyText.textContent = "Copiar E-mail";
+            copyBtn.classList.remove("border-emerald-500", "text-emerald-400");
+          }, 2500);
+        }).catch(err => {
+          console.error("Erro ao copiar e-mail: ", err);
+        });
+      });
+    }
+
+    /**
+     * Menu Mobile Drawer
+     */
+    function setupMobileMenu() {
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const openIcon = document.getElementById("menu-icon-open");
+      const closeIcon = document.getElementById("menu-icon-close");
+      const links = document.querySelectorAll(".mobile-nav-link");
+
+      if (!menuBtn || !mobileMenu) return;
+
+      menuBtn.addEventListener("click", () => {
+        const isClosed = mobileMenu.classList.contains("hidden");
+        if (isClosed) {
+          mobileMenu.classList.remove("hidden");
+          openIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        } else {
+          mobileMenu.classList.add("hidden");
+          openIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+      });
+
+      links.forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          openIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        });
+      });
+    }
+
+    /**
+     * Efeito de luz ambiente que segue o cursor suavemente (Desktop)
+     */
+    function setupCursorSpotlight() {
+      const light = document.getElementById("cursor-light");
+      if (!light) return;
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let lightX = mouseX;
+      let lightY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animate() {
+        // Easing suave
+        lightX += (mouseX - lightX) * 0.08;
+        lightY += (mouseY - lightY) * 0.08;
+        light.style.left = `${lightX}px`;
+        light.style.top = `${lightY}px`;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    /**
+     * Botão Voltar ao Topo
+     */
+    function setupBackToTop() {
+      const btn = document.getElementById("back-to-top");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>
