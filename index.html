@@ -1162,9 +1162,84 @@
     let currentFilteredProjects = [...PROJECTS_DATA];
     let currentModalIndex = 0;
     let currentModalSubIndex = 0;
+    let isModalOpen = false;
+
+    // Gerenciador de Autoplay Mobile & Detecção de Visibilidade via IntersectionObserver
+    let carouselObserver = null;
+    const cardControllers = new Map();
+
+    /**
+     * Verifica se o dispositivo está no modo mobile (max-width: 768px)
+     */
+    function isMobileView() {
+      return window.innerWidth <= 768 || window.matchMedia("(max-width: 768px)").matches;
+    }
+
+    /**
+     * Inicializa o IntersectionObserver para monitorar visibilidade dos carrosséis no mobile
+     */
+    function initCarouselObserver() {
+      if (carouselObserver) {
+        carouselObserver.disconnect();
+      }
+
+      carouselObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const controller = cardControllers.get(entry.target);
+          if (!controller) return;
+
+          // Autoplay inicia quando pelo menos 40% do card estiver na tela do celular
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+            controller.onEnterViewport();
+          } else {
+            controller.onLeaveViewport();
+          }
+        });
+      }, {
+        root: null,
+        threshold: [0, 0.4, 0.7]
+      });
+    }
+
+    // Gerenciador de redimensionamento entre desktop e mobile
+    let resizeTimer = null;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!isMobileView()) {
+          // No desktop, encerra qualquer autoplay que estivesse ativo
+          cardControllers.forEach(ctrl => ctrl.stopAutoplay());
+        } else {
+          // No mobile, retoma o autoplay dos cards que já estão visíveis na tela
+          cardControllers.forEach(ctrl => {
+            if (ctrl.isVisible() && !isModalOpen) {
+              ctrl.startAutoplay();
+            }
+          });
+        }
+      }, 200);
+    }, { passive: true });
+
+    // Gerenciador de aba/aplicativo em segundo plano
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        cardControllers.forEach(ctrl => ctrl.stopAutoplay());
+      } else {
+        if (isMobileView() && !isModalOpen) {
+          cardControllers.forEach(ctrl => {
+            if (ctrl.isVisible()) {
+              ctrl.startAutoplay();
+            }
+          });
+        }
+      }
+    });
 
     // Inicialização ao carregar a página
     document.addEventListener("DOMContentLoaded", () => {
+      // Inicializar observador de interseção para carrosséis mobile
+      initCarouselObserver();
+
       // Inicializar ícones Lucide
       lucide.createIcons();
 
@@ -1215,6 +1290,13 @@
      * Totalmente otimizado para mobile com CSS Scroll-Snap e touch-action: pan-y
      */
     function renderGallery(projects) {
+      // Limpa os controladores e observadores anteriores
+      cardControllers.forEach(ctrl => ctrl.destroy());
+      cardControllers.clear();
+      if (carouselObserver) {
+        carouselObserver.disconnect();
+      }
+
       const container = document.getElementById("gallery-container");
       container.innerHTML = "";
 
@@ -1242,7 +1324,7 @@
           .join("");
 
         // Slides do carrossel (com loading="lazy" em todos os slides após o primeiro)
-        const slidesHtml = images.map((imgSrc, slideIdx) => `
+        let slidesHtml = images.map((imgSrc, slideIdx) => `
           <div class="carousel-slide flex-shrink-0 w-full h-full snap-start relative overflow-hidden" data-slide-index="${slideIdx}" style="scroll-snap-align: start;">
             <img src="${imgSrc}" 
                  alt="${proj.title} - Imagem ${slideIdx + 1}" 
@@ -1250,6 +1332,18 @@
                  class="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105">
           </div>
         `).join("");
+
+        // Slide clonado no final para permitir loop contínuo e suave da direita para a esquerda sem saltos bruscos
+        if (hasMultiple) {
+          slidesHtml += `
+            <div class="carousel-slide carousel-slide-clone flex-shrink-0 w-full h-full snap-start relative overflow-hidden" data-slide-index="0" data-is-clone="true" style="scroll-snap-align: start;">
+              <img src="${images[0]}" 
+                   alt="${proj.title} - Continuidade em Loop" 
+                   loading="lazy" 
+                   class="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105">
+            </div>
+          `;
+        }
 
         // Controles de navegação (exibidos apenas se houver mais de uma imagem)
         let controlsHtml = "";
@@ -1352,20 +1446,128 @@
           });
         }
 
+        let stopAutoplay = () => {};
+        let pauseTemporarily = () => {};
+        let isUserInteracting = false;
+
         if (hasMultiple) {
-          // Atualização reativa de índice ao rolar (Touch ou clique) com throttle via requestAnimationFrame
+          let autoplayTimer = null;
+          let userInteractionTimeout = null;
+          let isCardVisible = false;
+          let isResettingClone = false;
+
+          function resetToStartInstant() {
+            if (isResettingClone) return;
+            isResettingClone = true;
+            track.classList.remove("scroll-smooth");
+            track.style.scrollBehavior = "auto";
+            track.scrollLeft = 0;
+            void track.offsetWidth; // Força repaint síncrono
+            track.classList.add("scroll-smooth");
+            track.style.scrollBehavior = "";
+            currentSlideIdx = 0;
+            updateCardIndicators(0);
+            setTimeout(() => {
+              isResettingClone = false;
+            }, 50);
+          }
+
+          function advanceToNextSlide() {
+            const width = track.clientWidth;
+            if (!width || isUserInteracting) return;
+
+            if (currentSlideIdx < totalSlides - 1) {
+              const nextIdx = currentSlideIdx + 1;
+              track.scrollTo({ left: nextIdx * width, behavior: "smooth" });
+              updateCardIndicators(nextIdx);
+            } else {
+              // Estamos no último slide: desliza suavemente da direita para a esquerda em direção ao clone
+              track.scrollTo({ left: totalSlides * width, behavior: "smooth" });
+              updateCardIndicators(0); // Indicador atualiza imediatamente para o slide 1
+
+              // Ao concluir a transição suave para o clone, reseta instantaneamente para a posição original
+              let resetDone = false;
+              const handleScrollEnd = () => {
+                if (resetDone) return;
+                resetDone = true;
+                clearTimeout(fallbackTimeout);
+                track.removeEventListener("scrollend", handleScrollEnd);
+                resetToStartInstant();
+              };
+
+              track.addEventListener("scrollend", handleScrollEnd, { once: true });
+              const fallbackTimeout = setTimeout(handleScrollEnd, 500);
+            }
+          }
+
+          function startAutoplay() {
+            stopAutoplay();
+            // Restrição estrita a dispositivos móveis (max-width: 768px)
+            if (!isMobileView() || !isCardVisible || isModalOpen || isUserInteracting) {
+              return;
+            }
+            autoplayTimer = setInterval(() => {
+              if (!isMobileView() || !isCardVisible || isModalOpen || isUserInteracting) {
+                stopAutoplay();
+                return;
+              }
+              advanceToNextSlide();
+            }, 3000); // Transição a cada 3 segundos conforme solicitado
+          }
+
+          stopAutoplay = function() {
+            if (autoplayTimer) {
+              clearInterval(autoplayTimer);
+              autoplayTimer = null;
+            }
+          };
+
+          pauseTemporarily = function(duration = 4500) {
+            stopAutoplay();
+            clearTimeout(userInteractionTimeout);
+            userInteractionTimeout = setTimeout(() => {
+              if (!isUserInteracting && isCardVisible && isMobileView() && !isModalOpen) {
+                startAutoplay();
+              }
+            }, duration);
+          };
+
+          // Atualização reativa de índice ao rolar (Touch ou clique)
           let rafId = null;
           track.addEventListener("scroll", () => {
+            if (isResettingClone) return;
             if (rafId) cancelAnimationFrame(rafId);
             rafId = requestAnimationFrame(() => {
               const width = track.clientWidth;
               if (width > 0) {
-                const detectedIdx = Math.round(track.scrollLeft / width);
-                if (detectedIdx >= 0 && detectedIdx < totalSlides && detectedIdx !== currentSlideIdx) {
-                  updateCardIndicators(detectedIdx);
+                const rawIdx = Math.round(track.scrollLeft / width);
+                const normalizedIdx = rawIdx >= totalSlides ? 0 : rawIdx;
+                if (normalizedIdx >= 0 && normalizedIdx < totalSlides && normalizedIdx !== currentSlideIdx) {
+                  updateCardIndicators(normalizedIdx);
                 }
               }
             });
+          }, { passive: true });
+
+          // Interações de toque: pausar autoplay temporariamente
+          track.addEventListener("touchstart", () => {
+            isUserInteracting = true;
+            stopAutoplay();
+            clearTimeout(userInteractionTimeout);
+          }, { passive: true });
+
+          track.addEventListener("touchend", () => {
+            isUserInteracting = false;
+            const width = track.clientWidth;
+            if (width > 0 && Math.round(track.scrollLeft / width) >= totalSlides) {
+              setTimeout(resetToStartInstant, 300);
+            }
+            pauseTemporarily(4500);
+          }, { passive: true });
+
+          track.addEventListener("touchcancel", () => {
+            isUserInteracting = false;
+            pauseTemporarily(4500);
           }, { passive: true });
 
           // Botão Próximo
@@ -1373,10 +1575,8 @@
             nextBtn.addEventListener("click", (e) => {
               e.stopPropagation();
               e.preventDefault();
-              const width = track.clientWidth;
-              const target = (currentSlideIdx + 1) % totalSlides;
-              track.scrollTo({ left: target * width, behavior: "smooth" });
-              updateCardIndicators(target);
+              pauseTemporarily(4500);
+              advanceToNextSlide();
             });
           }
 
@@ -1385,11 +1585,42 @@
             prevBtn.addEventListener("click", (e) => {
               e.stopPropagation();
               e.preventDefault();
+              pauseTemporarily(4500);
               const width = track.clientWidth;
-              const target = (currentSlideIdx - 1 + totalSlides) % totalSlides;
-              track.scrollTo({ left: target * width, behavior: "smooth" });
-              updateCardIndicators(target);
+              if (width > 0) {
+                const target = (currentSlideIdx - 1 + totalSlides) % totalSlides;
+                track.scrollTo({ left: target * width, behavior: "smooth" });
+                updateCardIndicators(target);
+              }
             });
+          }
+
+          // Controlador registrado no IntersectionObserver
+          const controller = {
+            cardElement: card,
+            onEnterViewport: () => {
+              isCardVisible = true;
+              if (isMobileView() && !isModalOpen && !isUserInteracting) {
+                startAutoplay();
+              }
+            },
+            onLeaveViewport: () => {
+              isCardVisible = false;
+              stopAutoplay();
+            },
+            startAutoplay,
+            stopAutoplay,
+            pauseTemporarily,
+            isVisible: () => isCardVisible,
+            destroy: () => {
+              stopAutoplay();
+              clearTimeout(userInteractionTimeout);
+            }
+          };
+
+          cardControllers.set(card, controller);
+          if (carouselObserver) {
+            carouselObserver.observe(card);
           }
         }
 
@@ -1417,6 +1648,11 @@
           pointerDownX = e.clientX;
           pointerDownY = e.clientY;
           isDragging = false;
+          if (hasMultiple) {
+            isUserInteracting = true;
+            stopAutoplay();
+            pauseTemporarily(4500);
+          }
         });
 
         track.addEventListener("pointermove", (e) => {
@@ -1426,6 +1662,10 @@
         });
 
         track.addEventListener("pointerup", (e) => {
+          if (hasMultiple) {
+            isUserInteracting = false;
+            pauseTemporarily(4500);
+          }
           if (!isDragging && !e.target.closest(".carousel-nav-btn") && !e.target.closest(".expand-modal-btn")) {
             openModal(proj.id, currentSlideIdx);
           }
@@ -1553,6 +1793,10 @@
       const index = currentFilteredProjects.findIndex(p => p.id === projectId);
       if (index === -1) return;
 
+      isModalOpen = true;
+      // Pausa imediatamente qualquer autoplay em segundo plano enquanto o modal estiver aberto
+      cardControllers.forEach(ctrl => ctrl.stopAutoplay());
+
       currentModalIndex = index;
       currentModalSubIndex = initialSlideIdx || 0;
       updateModalContent();
@@ -1564,10 +1808,20 @@
     }
 
     function closeModal() {
+      isModalOpen = false;
       const modal = document.getElementById("project-modal");
       modal.classList.add("hidden");
       modal.classList.remove("flex");
       document.body.style.overflow = ""; // Restaura scroll
+
+      // Retoma o autoplay no mobile para os cards visíveis na tela
+      if (isMobileView()) {
+        cardControllers.forEach(ctrl => {
+          if (ctrl.isVisible()) {
+            ctrl.startAutoplay();
+          }
+        });
+      }
     }
 
     function navigateModal(direction) {
