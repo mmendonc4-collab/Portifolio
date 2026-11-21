@@ -303,7 +303,19 @@
 
             <div class="absolute inset-0 bg-gradient-to-t from-bgDark via-bgDark/40 to-transparent"></div>
 
-            <div class="absolute bottom-6 left-6 right-6">
+            <!-- Badge de experiência (posicionado no topo direito da foto, sem sobrepor botões) -->
+            <div
+              class="absolute top-4 right-4 z-20 glass-card px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-glow-accent flex items-center gap-2.5 backdrop-blur-xl">
+              <div class="w-8 h-8 rounded-xl bg-accent flex items-center justify-center text-white shrink-0">
+                <i data-lucide="award" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="font-display font-light text-sm text-white leading-tight">18 Anos</div>
+                <div class="text-[10px] font-mono font-light text-textMuted uppercase tracking-wider">de experiência</div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-6 left-6 right-6 z-10">
               <span
                 class="inline-block px-3 py-1 rounded-full bg-accent/90 text-white text-[11px] font-mono font-light uppercase tracking-wider mb-2">
                 Designer Gráfico Sênior
@@ -313,20 +325,8 @@
             </div>
           </div>
 
-          <!-- Badge flutuante de experiência -->
-          <div
-            class="absolute -bottom-5 -right-4 sm:-right-6 glass-card p-4 rounded-2xl border border-white/15 shadow-glow-accent flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white">
-              <i data-lucide="award" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="font-display font-light text-lg text-white">+18 Anos</div>
-              <div class="text-[10px] font-mono font-light text-textMuted uppercase">Design & Gráfica</div>
-            </div>
-          </div>
-
           <!-- Botões de Ação -->
-          <div class="flex flex-wrap items-center gap-3 pt-10">
+          <div class="flex flex-wrap items-center gap-3 pt-6">
             <a href="#trabalhos"
               class="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-bgDark font-light text-xs uppercase tracking-wider hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-glow-accent">
               <span>Ver Trabalhos</span>
@@ -492,8 +492,8 @@
       <!-- Faixa de Destaques / Métricas Bento -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 pt-16 md:pt-20">
         <div class="glass-card p-4 sm:p-5 rounded-2xl">
-          <div class="font-display font-light text-2xl sm:text-3xl text-white">+18 Anos</div>
-          <p class="text-xs font-mono font-light text-textMuted uppercase mt-1">Experiência no Mercado</p>
+          <div class="font-display font-light text-2xl sm:text-3xl text-white">18 Anos</div>
+          <p class="text-xs font-mono font-light text-textMuted uppercase mt-1">de experiência</p>
         </div>
         <div class="glass-card p-4 sm:p-5 rounded-2xl">
           <div class="font-display font-light text-2xl sm:text-3xl text-accent">Offset & Digital</div>
