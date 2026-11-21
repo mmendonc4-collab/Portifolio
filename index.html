@@ -157,6 +157,28 @@
     .gallery-item.hidden-filter {
       display: none;
     }
+
+    /* Ocultar barra de rolagem mantendo a rolagem ativa */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Suporte a touch horizontal com snap nativo para carrossel */
+    .carousel-track {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+    }
+
+    .carousel-slide {
+      scroll-snap-align: start;
+      scroll-snap-stop: normal;
+    }
   </style>
 </head>
 
@@ -496,50 +518,49 @@
       <!-- Cabeçalho da Seção -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div>
-          <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
+          <span class="text-xs font-mono uppercase tracking-widest text-accent font-light flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-accent"></span>
             Galeria Curada
           </span>
-          <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mt-2">
+          <h2 class="font-display font-light text-3xl sm:text-4xl md:text-5xl text-white mt-2">
             Trabalhos em Destaque
           </h2>
-          <p class="text-textSecondary text-sm sm:text-base mt-2 max-w-xl">
-            Navegue pelos projetos visuais. Clique em qualquer arte para abrir a visualização detalhada em tela cheia
-            com especificações de criação.
+          <p class="text-textSecondary text-sm sm:text-base font-light mt-2 max-w-xl">
+            Navegue pelos projetos visuais. Deslize horizontalmente em qualquer card para ver mais detalhes e peças da série. Clique para abrir a visualização detalhada em tela cheia.
           </p>
         </div>
 
         <div class="text-xs font-mono text-textMuted hidden md:block">
-          Exibindo <span id="project-count" class="text-white font-bold">14</span> criações visuais
+          Exibindo <span id="project-count" class="text-white font-light">12</span> criações visuais
         </div>
       </div>
 
       <!-- Barra de Filtros Interativa (Pills com animação) -->
       <div class="flex items-center gap-2 overflow-x-auto pb-4 pt-1 mb-8 no-scrollbar scroll-smooth">
         <button
-          class="filter-btn active px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 bg-accent text-white shadow-glow-accent cursor-pointer whitespace-nowrap"
+          class="filter-btn active px-5 py-2.5 rounded-full text-xs font-light tracking-wider uppercase transition-all duration-300 bg-accent text-white shadow-glow-accent cursor-pointer whitespace-nowrap"
           data-filter="all">
-          Todos <span class="ml-1 opacity-80">(14)</span>
+          Todos <span class="filter-count ml-1 opacity-80">(12)</span>
         </button>
         <button
-          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-light tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
           data-filter="identidade-visual">
-          Identidade Visual <span class="ml-1 text-textMuted">(4)</span>
+          Identidade Visual <span class="filter-count ml-1 text-textMuted">(3)</span>
         </button>
         <button
-          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-light tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
           data-filter="social-media">
-          Social Media <span class="ml-1 text-textMuted">(4)</span>
+          Social Media <span class="filter-count ml-1 text-textMuted">(5)</span>
         </button>
         <button
-          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-light tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
           data-filter="impressos">
-          Impressos & Sinalização <span class="ml-1 text-textMuted">(3)</span>
+          Impressos & Sinalização <span class="filter-count ml-1 text-textMuted">(2)</span>
         </button>
         <button
-          class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
+          class="filter-btn px-5 py-2.5 rounded-full text-xs font-light tracking-wider uppercase transition-all duration-300 bg-surfaceElevated border border-white/5 text-textSecondary hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap"
           data-filter="apresentacoes">
-          Infográficos & Propostas <span class="ml-1 text-textMuted">(3)</span>
+          Infográficos & Propostas <span class="filter-count ml-1 text-textMuted">(2)</span>
         </button>
       </div>
 
@@ -556,14 +577,14 @@
     <!-- ========================================== -->
     <section id="especialidades" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-white/5">
       <div class="mb-12">
-        <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-accent font-light flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-accent"></span>
           Soluções Visuais
         </span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mt-2">
+        <h2 class="font-display font-light text-3xl sm:text-4xl md:text-5xl text-white mt-2">
           Especialidades & Entregas
         </h2>
-        <p class="text-textSecondary text-sm sm:text-base mt-2 max-w-xl">
+        <p class="text-textSecondary text-sm sm:text-base font-light mt-2 max-w-xl">
           Atuação completa que une sensibilidade artística contemporânea ao rigor técnico de produção digital e gráfica.
         </p>
       </div>
@@ -582,11 +603,11 @@
               class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
               <i data-lucide="palette" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono text-accent uppercase tracking-wider">Marcas & Propostas Técnicas</span>
-            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1 mb-3">
+            <span class="text-xs font-mono text-accent uppercase tracking-wider font-light">Marcas & Propostas Técnicas</span>
+            <h3 class="font-display font-light text-2xl sm:text-3xl text-white mt-1 mb-3">
               Identidade Visual & Suporte a Propostas Comerciais
             </h3>
-            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+            <p class="text-textSecondary text-sm font-light leading-relaxed mb-6">
               Desenvolvimento de marcas memoráveis, manuais e materiais gráficos estratégicos para licitações e
               concorrências. Criação de organogramas, fluxogramas e matrizes RACI que traduzem dados complexos em peças
               visuais claras e de alto impacto.
@@ -594,16 +615,16 @@
           </div>
           <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Identidade
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Identidade
               & Branding</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Propostas
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Propostas
               para Licitações</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Fluxogramas
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Fluxogramas
               & Matrizes RACI</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Vetores
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Vetores
               (.CDR, .AI)</span>
           </div>
         </div>
@@ -619,24 +640,24 @@
               class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
               <i data-lucide="layers" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono text-accent uppercase tracking-wider">Marketing Digital & Ads</span>
-            <h3 class="font-display font-bold text-2xl text-white mt-1 mb-3">
+            <span class="text-xs font-mono text-accent uppercase tracking-wider font-light">Marketing Digital & Ads</span>
+            <h3 class="font-display font-light text-2xl text-white mt-1 mb-3">
               Mídias Digitais, Carrosséis & Anúncios
             </h3>
-            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+            <p class="text-textSecondary text-sm font-light leading-relaxed mb-6">
               Peças visuais e campanhas completas para redes sociais com estratégia de funil de vendas, copywriting
               persuasivo e gerenciamento de tráfego pago (Google Ads, Facebook e Instagram).
             </p>
           </div>
           <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Google
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Google
               Ads & Meta Ads</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Carrosséis
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Carrosséis
               Narrativos</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Copywriting
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Copywriting
               & Funil</span>
           </div>
         </div>
@@ -649,27 +670,27 @@
               class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
               <i data-lucide="printer" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono text-accent uppercase tracking-wider">Pré-Impressão & Grandes Formatos</span>
-            <h3 class="font-display font-bold text-2xl text-white mt-1 mb-3">
+            <span class="text-xs font-mono text-accent uppercase tracking-wider font-light">Pré-Impressão & Grandes Formatos</span>
+            <h3 class="font-display font-light text-2xl text-white mt-1 mb-3">
               Pré-Impressão, Mimaki & Sinalização
             </h3>
-            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+            <p class="text-textSecondary text-sm font-light leading-relaxed mb-6">
               Ampla vivência em chão de fábrica gráfica e comunicação visual: operação de impressoras Mimaki, montagem
               de grades CTP, fechamento em curvas, perfis CMYK, envelopamento automotivo e acabamentos especiais.
             </p>
           </div>
           <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Pré-Impressão
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Pré-Impressão
               & CTP</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Banners
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Banners
               Mimaki & Lonas</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Envelopamento
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Envelopamento
               Automotivo</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Rigor
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Rigor
               CMYK & Curvas</span>
           </div>
         </div>
@@ -685,24 +706,24 @@
               class="w-12 h-12 rounded-2xl bg-surfaceElevated border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:shadow-glow-accent transition-all">
               <i data-lucide="video" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono text-accent uppercase tracking-wider">Audiovisual & Diagramação</span>
-            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1 mb-3">
+            <span class="text-xs font-mono text-accent uppercase tracking-wider font-light">Audiovisual & Diagramação</span>
+            <h3 class="font-display font-light text-2xl sm:text-3xl text-white mt-1 mb-3">
               Edição de Vídeo, Motion & Apresentações Técnicas
             </h3>
-            <p class="text-textSecondary text-sm leading-relaxed mb-6">
+            <p class="text-textSecondary text-sm font-light leading-relaxed mb-6">
               Produção audiovisual completa com Premiere, After Effects e CapCut para comerciais e mídias sociais.
               Diagramação técnica de documentos, catálogos e relatórios no InDesign para apresentações executivas.
             </p>
           </div>
           <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Premiere
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Premiere
               & After Effects</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">Animação
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">Animação
               & Motion</span>
             <span
-              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono text-textSecondary border border-white/5">InDesign
+              class="px-3 py-1 rounded-full bg-surfaceElevated text-xs font-mono font-light text-textSecondary border border-white/5">InDesign
               Editorial</span>
           </div>
         </div>
@@ -725,17 +746,17 @@
 
         <div class="relative z-10 max-w-3xl mx-auto text-center space-y-6">
           <span
-            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-wider">
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-wider font-light">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
             Vamos trabalhar juntos?
           </span>
 
           <h2
-            class="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
+            class="font-display font-light text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
             Pronto para tirar o seu projeto do papel?
           </h2>
 
-          <p class="text-textSecondary text-base sm:text-lg max-w-xl mx-auto">
+          <p class="text-textSecondary text-base sm:text-lg font-light max-w-xl mx-auto">
             Seja para criar sua identidade visual, desenvolver materiais gráficos para licitações e concorrências, ou
             produzir campanhas e impressos de alto padrão, estou à disposição.
           </p>
@@ -747,8 +768,8 @@
                 <i data-lucide="phone" class="w-5 h-5"></i>
               </div>
               <div class="min-w-0">
-                <div class="text-[10px] font-mono uppercase text-textMuted">WhatsApp / Celular</div>
-                <div class="text-xs font-semibold text-white truncate">+55 (31) 98735-7432</div>
+                <div class="text-[10px] font-mono uppercase text-textMuted font-light">WhatsApp / Celular</div>
+                <div class="text-xs font-light text-white truncate">+55 (31) 98735-7432</div>
               </div>
             </div>
 
@@ -757,8 +778,8 @@
                 <i data-lucide="mail" class="w-5 h-5"></i>
               </div>
               <div class="min-w-0">
-                <div class="text-[10px] font-mono uppercase text-textMuted">E-mail Direto</div>
-                <div class="text-xs font-semibold text-white truncate">celo.mendonca01@gmail.com</div>
+                <div class="text-[10px] font-mono uppercase text-textMuted font-light">E-mail Direto</div>
+                <div class="text-xs font-light text-white truncate">celo.mendonca01@gmail.com</div>
               </div>
             </div>
 
@@ -767,8 +788,8 @@
                 <i data-lucide="map-pin" class="w-5 h-5"></i>
               </div>
               <div class="min-w-0">
-                <div class="text-[10px] font-mono uppercase text-textMuted">Localização</div>
-                <div class="text-xs font-semibold text-white truncate">Ribeirão das Neves - MG</div>
+                <div class="text-[10px] font-mono uppercase text-textMuted font-light">Localização</div>
+                <div class="text-xs font-light text-white truncate">Ribeirão das Neves - MG</div>
               </div>
             </div>
           </div>
@@ -881,11 +902,29 @@
         <i data-lucide="chevron-right" class="w-6 h-6"></i>
       </button>
 
-      <!-- Lado Esquerdo: Imagem em Alta Resolução -->
+      <!-- Lado Esquerdo: Imagem em Alta Resolução & Carrossel do Modal -->
       <div
-        class="relative w-full lg:w-[65%] bg-black/80 flex items-center justify-center p-4 sm:p-8 min-h-[320px] lg:min-h-[580px] overflow-hidden">
+        class="relative w-full lg:w-[65%] bg-black/80 flex items-center justify-center p-4 sm:p-8 min-h-[320px] lg:min-h-[580px] overflow-hidden group/modal select-none">
         <img id="modal-image" src="" alt="Visualização do Projeto"
           class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl transition-all duration-300">
+
+        <!-- Botões de Troca de Slide dentro do Projeto no Modal -->
+        <button id="modal-sub-prev-btn"
+          class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/70 hover:bg-accent text-white border border-white/20 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-lg hidden"
+          aria-label="Imagem Anterior do Projeto">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <button id="modal-sub-next-btn"
+          class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/70 hover:bg-accent text-white border border-white/20 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-lg hidden"
+          aria-label="Próxima Imagem do Projeto">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Indicador de Slide do Projeto no Modal -->
+        <div id="modal-sub-indicator"
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-white/90 text-xs font-mono font-light hidden">
+          1 / 3
+        </div>
       </div>
 
       <!-- Lado Direito: Painel de Informações Técnicas -->
@@ -896,17 +935,17 @@
           <!-- Topo do Card com Contador e Categoria -->
           <div class="flex items-center justify-between border-b border-white/10 pb-4">
             <span id="modal-category"
-              class="px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs uppercase tracking-wider">
+              class="px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs uppercase tracking-wider font-light">
               Categoria
             </span>
-            <span id="modal-counter" class="text-xs font-mono text-textMuted">
+            <span id="modal-counter" class="text-xs font-mono text-textMuted font-light">
               01 / 12
             </span>
           </div>
 
           <!-- Título e Cliente -->
           <div>
-            <h3 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white">
+            <h3 id="modal-title" class="font-display font-light text-2xl sm:text-3xl text-white">
               Nome do Projeto
             </h3>
             <div class="flex items-center gap-3 text-xs text-textSecondary font-mono mt-1">
@@ -955,50 +994,58 @@
     /**
      * =======================================================
      * BASE DE DADOS DOS PROJETOS DO PORTFÓLIO
-     * 
-     * INSTRUÇÕES PARA O DESIGNER:
-     * Para substituir as imagens de exemplo pelas suas artes reais:
-     * 1. Coloque seus arquivos (ex: .jpg, .png, .webp) em uma pasta 'assets/'
-     * 2. Altere o campo 'image' para o caminho local (ex: './assets/meu-projeto.jpg')
-     * 3. Personalize títulos, categorias, clientes e ferramentas à vontade!
      * =======================================================
      */
     const PROJECTS_DATA = [
       {
         id: 1,
-        title: "Proposta Comercial & Técnica — DER-MG (Capa Executiva)",
+        title: "Proposta Comercial & Técnica — DER-MG (Capas Executivas)",
         category: "apresentacoes",
         categoryLabel: "Propostas & Editais",
         aspect: "aspect-[4/5]",
-        image: "./assets/proposta-der-mg-capa1.jpg",
+        images: [
+          "./assets/proposta-der-mg-capa1.jpg",
+          "./assets/proposta-der-mg-capa2.jpg",
+          "./assets/proposta-der-mg-capa6.jpg",
+          "./assets/proposta-der-mg-capa9.jpg"
+        ],
         client: "Strata Engenharia / DER-MG",
         year: "2025",
-        description: "Desenvolvimento de capa e projeto gráfico para proposta técnica em licitação pública de infraestrutura viária do DER-MG. Rigor visual, composição editorial e alinhamento às exigências de editais de engenharia.",
+        description: "Desenvolvimento de capas e projeto gráfico executivo completo para propostas técnicas em concorrências públicas de infraestrutura viária do DER-MG. Rigor visual, composição editorial e alinhamento às exigências de editais de engenharia.",
         tools: ["InDesign", "Illustrator", "Photoshop"]
       },
       {
         id: 2,
-        title: "Kings Burguer — Campanha Gastronômica & Feed",
+        title: "Carrossel Estratégico para Redes Sociais — Narrativa & Engajamento",
         category: "social-media",
         categoryLabel: "Social Media",
         aspect: "aspect-square",
-        image: "./assets/social-kings-burguer.jpg",
-        client: "Kings Burguer Oficial",
+        images: [
+          "./assets/social-carrossel.jpg",
+          "./assets/social-carrossel-02.jpg",
+          "./assets/social-carrossel-03.jpg",
+          "./assets/social-carrossel-04.jpg"
+        ],
+        client: "FinScale / Estratégia Digital",
         year: "2024",
-        description: "Direção de arte e peça publicitária de alto apelo visual para redes sociais. Tratamento avançado de imagem, composição cromática contrastante e foco em retenção e apetite appeal.",
+        description: "Sequência narrativa em 4 lâminas no formato carrossel para redes sociais (Instagram e LinkedIn). Estruturação pensada para retenção contínua, leitura fluída e conversão através de copywriting visual estratégico.",
         tools: ["Photoshop", "Illustrator"]
       },
       {
         id: 3,
-        title: "Fujiyama Restaurante — Painel de Grande Formato",
+        title: "Flyer Promocional 4x4 — Mockup & Produção Gráfica",
         category: "impressos",
         categoryLabel: "Impressos & Sinalização",
-        aspect: "aspect-[16/9]",
-        image: "./assets/sinalizacao-fujiyama-painel.jpg",
-        client: "Fujiyama Culinária Oriental",
+        aspect: "aspect-square",
+        images: [
+          "./assets/impresso-flyer-mockup.jpg",
+          "./assets/impresso-flyer-frente.jpg",
+          "./assets/impresso-flyer-verso.jpg"
+        ],
+        client: "Comunicação Gráfica Promocional",
         year: "2024",
-        description: "Projeto de comunicação visual ambiental e painel decorativo interno de grande porte (3,12m x 2,02m). Fechamento rigoroso em curvas, calibração CMYK e especificações técnicas para impressão em alta resolução.",
-        tools: ["CorelDRAW", "Photoshop", "Mimaki"]
+        description: "Criação, visualização em mockup e fechamento de flyer frente e verso (4x4 cores) com verniz localizado. Rigor técnico de chão de fábrica: montagem de grades, sangrias, marcas de corte e conversão total para curvas.",
+        tools: ["CorelDRAW", "Photoshop", "CTP"]
       },
       {
         id: 4,
@@ -1006,10 +1053,13 @@
         category: "identidade-visual",
         categoryLabel: "Identidade Visual",
         aspect: "aspect-[4/5]",
-        image: "./assets/logo-iza-01.jpg",
+        images: [
+          "./assets/logo-iza-01.jpg",
+          "./assets/logo-iza-aplicacao.jpg"
+        ],
         client: "IZA Cosméticos & Estética",
         year: "2024",
-        description: "Criação de logotipo minimalista, símbolo gráfico e manual de aplicação de marca. Tipografia refinada e paleta cromática contemporânea para posicionamento premium.",
+        description: "Criação de logotipo minimalista, símbolo gráfico e manual de aplicação de marca em materiais corporativos e papelaria. Tipografia refinada e paleta cromática contemporânea para posicionamento premium.",
         tools: ["Illustrator", "Photoshop", "CorelDRAW"]
       },
       {
@@ -1018,7 +1068,10 @@
         category: "social-media",
         categoryLabel: "Social Media",
         aspect: "aspect-square",
-        image: "./assets/social-line-music.jpg",
+        images: [
+          "./assets/social-line-music.jpg",
+          "./assets/social-line-music-02.jpg"
+        ],
         client: "Line Escola de Música",
         year: "2024",
         description: "Comunicação visual e peças de feed voltadas para captação de novos alunos de instrumentos musicais. Composição limpa com elementos vetoriais e chamada para ação estratégica.",
@@ -1026,27 +1079,33 @@
       },
       {
         id: 6,
-        title: "Flyer Promocional 4x4 — Mockup & Produção Gráfica",
+        title: "Fujiyama Restaurante — Comunicação Visual & Sinalização",
         category: "impressos",
         categoryLabel: "Impressos & Sinalização",
-        aspect: "aspect-square",
-        image: "./assets/impresso-flyer-mockup.jpg",
-        client: "Comunicação Gráfica Promocional",
+        aspect: "aspect-[16/9]",
+        images: [
+          "./assets/sinalizacao-fujiyama-painel.jpg",
+          "./assets/sinalizacao-fujiyama-adesivo.jpg",
+          "./assets/sinalizacao-fujiyama-fachada.jpg"
+        ],
+        client: "Fujiyama Culinária Oriental",
         year: "2024",
-        description: "Criação e fechamento de flyer frente e verso (4x4 cores) com verniz localizado. Rigor técnico em pré-impressão: montagem de grades, sangrias, marcas de corte e conversão total para curvas.",
-        tools: ["CorelDRAW", "Photoshop", "CTP"]
+        description: "Projeto integrado de comunicação visual ambiental: painel decorativo interno de grande porte (3,12m x 2,02m), adesivos de sinalização e lona de fachada. Fechamento rigoroso em curvas, calibração CMYK e especificações técnicas para produção física.",
+        tools: ["CorelDRAW", "Photoshop", "Mimaki"]
       },
       {
         id: 7,
-        title: "Strata Engenharia — Documento Técnico DER-MG",
-        category: "apresentacoes",
-        categoryLabel: "Propostas & Editais",
-        aspect: "aspect-[4/5]",
-        image: "./assets/proposta-der-mg-capa6.jpg",
-        client: "Strata Engenharia",
-        year: "2025",
-        description: "Padronização visual e diagramação executiva de relatório técnico para concorrência pública. Tradução de especificações de engenharia em identidade gráfica institucional de alto impacto.",
-        tools: ["InDesign", "Illustrator"]
+        title: "Kings Burguer — Campanha Gastronômica & Feed",
+        category: "social-media",
+        categoryLabel: "Social Media",
+        aspect: "aspect-square",
+        images: [
+          "./assets/social-kings-burguer.jpg"
+        ],
+        client: "Kings Burguer Oficial",
+        year: "2024",
+        description: "Direção de arte e peça publicitária de alto apelo visual para redes sociais. Tratamento avançado de imagem, composição cromática contrastante e foco em retenção e apetite appeal.",
+        tools: ["Photoshop", "Illustrator"]
       },
       {
         id: 8,
@@ -1054,89 +1113,84 @@
         category: "social-media",
         categoryLabel: "Social Media",
         aspect: "aspect-[9/16]",
-        image: "./assets/storie-line-music.jpg",
+        images: [
+          "./assets/storie-line-music.jpg"
+        ],
         client: "Line Escola de Música",
         year: "2024",
-        description: "Série de layouts verticais (9:16) para Stories do Instagram e WhatsApp Status. Estruturação pensada para engajamento rápido e interação com enquetes e links diretos.",
+        description: "Layout vertical em proporção 9:16 otimizado para Stories do Instagram e WhatsApp Status. Estruturação pensada para engajamento rápido e interação com enquetes e links diretos.",
         tools: ["Photoshop", "After Effects"]
       },
       {
         id: 9,
-        title: "Fujiyama Restaurante — Fachada & Testeira Comercial",
-        category: "impressos",
-        categoryLabel: "Impressos & Sinalização",
-        aspect: "aspect-[16/9]",
-        image: "./assets/sinalizacao-fujiyama-fachada.jpg",
-        client: "Fujiyama",
-        year: "2024",
-        description: "Comunicação visual externa em grande escala (3,50m x 0,70m) para fachada de restaurante. Lona backlight resistente com resolução calibrada e arte finalizada em CorelDRAW para produção física.",
-        tools: ["CorelDRAW", "Photoshop"]
-      },
-      {
-        id: 10,
-        title: "Aplicação de Marca & Papelaria Corporativa — IZA",
-        category: "identidade-visual",
-        categoryLabel: "Identidade Visual",
-        aspect: "aspect-square",
-        image: "./assets/logo-iza-aplicacao.jpg",
-        client: "IZA Cosméticos & Estética",
-        year: "2024",
-        description: "Estudo de aplicação de marca em papelaria, embalagens e materiais institucionais. Diretrizes de área de proteção, redução mínima e contraste sobre fundos escuros.",
-        tools: ["Illustrator", "Photoshop"]
-      },
-      {
-        id: 11,
         title: "Campanha Promocional Happy Hour — Fujiyama",
         category: "social-media",
         categoryLabel: "Social Media",
         aspect: "aspect-square",
-        image: "./assets/social-happy-hour-fujiyama.jpg",
+        images: [
+          "./assets/social-happy-hour-fujiyama.jpg"
+        ],
         client: "Fujiyama Culinária Oriental",
         year: "2024",
-        description: "Criativo para redes sociais promovendo o Happy Hour. Tratamento de cor especial em tons quentes e composição para gerar conversão e atração de clientes.",
+        description: "Criativo para redes sociais promovendo o Happy Hour gastronômico. Tratamento de cor especial em tons quentes e composição para gerar conversão e atração de clientes.",
         tools: ["Photoshop", "Illustrator"]
       },
       {
-        id: 12,
-        title: "Manual & Projeto de Sinalização Rodoviária — DER-MG",
-        category: "apresentacoes",
-        categoryLabel: "Propostas & Editais",
-        aspect: "aspect-[4/5]",
-        image: "./assets/proposta-der-mg-capa9.jpg",
-        client: "Strata Engenharia / DER-MG",
-        year: "2025",
-        description: "Diagramação de memorial descritivo e proposta executiva de engenharia. Organização de matrizes RACI, organogramas operacionais e mapas temáticos de execução.",
-        tools: ["InDesign", "Illustrator", "CorelDRAW"]
-      },
-      {
-        id: 13,
+        id: 10,
         title: "Identidade Visual — Sorveteria Premium",
         category: "identidade-visual",
         categoryLabel: "Identidade Visual",
         aspect: "aspect-square",
-        image: "./assets/logo-sorveteria.png",
+        images: [
+          "./assets/logo-sorveteria.png"
+        ],
         client: "Sorveteria Premium",
         year: "2024",
         description: "Design de símbolo vetorial e logotipo estilizado para franquia de sorvetes artesanais. Cores vibrantes e excelente aplicabilidade em embalagens e fachadas.",
         tools: ["Illustrator", "CorelDRAW"]
       },
       {
-        id: 14,
+        id: 11,
         title: "Identidade Visual & Assinatura — Roberta",
         category: "identidade-visual",
         categoryLabel: "Identidade Visual",
         aspect: "aspect-square",
-        image: "./assets/logo-roberta.png",
+        images: [
+          "./assets/logo-roberta.png"
+        ],
         client: "Roberta Personal Branding",
         year: "2024",
         description: "Branding pessoal elegante com monograma fluído, formas orgânicas e assinatura visual sofisticada para consultoria e posicionamento profissional.",
         tools: ["Illustrator", "Photoshop"]
+      },
+      {
+        id: 12,
+        title: "Strata Engenharia — Diagramação de Editais DER-MG",
+        category: "apresentacoes",
+        categoryLabel: "Propostas & Editais",
+        aspect: "aspect-[4/5]",
+        images: [
+          "./assets/proposta-der-mg-capa6.jpg",
+          "./assets/proposta-der-mg-capa9.jpg"
+        ],
+        client: "Strata Engenharia / DER-MG",
+        year: "2025",
+        description: "Padronização visual e diagramação executiva de memorial descritivo e relatório técnico para concorrências públicas. Tradução de especificações de engenharia em identidade gráfica institucional de alto impacto.",
+        tools: ["InDesign", "Illustrator", "CorelDRAW"]
       }
     ];
 
-    // Variáveis de Estado
+    // Adiciona compatibilidade retroativa para 'image' apontando para images[0]
+    PROJECTS_DATA.forEach(p => {
+      if (!p.image && p.images && p.images.length > 0) {
+        p.image = p.images[0];
+      }
+    });
+
+    // Variáveis de Estado Globais
     let currentFilteredProjects = [...PROJECTS_DATA];
     let currentModalIndex = 0;
+    let currentModalSubIndex = 0;
 
     // Inicialização ao carregar a página
     document.addEventListener("DOMContentLoaded", () => {
@@ -1156,7 +1210,32 @@
     });
 
     /**
-     * Renderiza os cards na galeria com suporte ao layout Masonry
+     * Atualiza os contadores das pílulas de filtro
+     */
+    function updateFilterCounts() {
+      const counts = {
+        all: PROJECTS_DATA.length,
+        "identidade-visual": PROJECTS_DATA.filter(p => p.category === "identidade-visual").length,
+        "social-media": PROJECTS_DATA.filter(p => p.category === "social-media").length,
+        "impressos": PROJECTS_DATA.filter(p => p.category === "impressos").length,
+        "apresentacoes": PROJECTS_DATA.filter(p => p.category === "apresentacoes").length
+      };
+
+      const projectCountEl = document.getElementById("project-count");
+      if (projectCountEl) projectCountEl.textContent = counts.all;
+
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        const filter = btn.dataset.filter;
+        const countSpan = btn.querySelector(".filter-count");
+        if (countSpan && counts[filter] !== undefined) {
+          countSpan.textContent = `(${counts[filter]})`;
+        }
+      });
+    }
+
+    /**
+     * Renderiza os cards na galeria com suporte a Carrosséis Independentes
+     * Totalmente otimizado para mobile com CSS Scroll-Snap e touch-action: pan-y
      */
     function renderGallery(projects) {
       const container = document.getElementById("gallery-container");
@@ -1171,52 +1250,96 @@
         return;
       }
 
-      projects.forEach((proj, index) => {
+      projects.forEach((proj, cardIdx) => {
         const card = document.createElement("div");
-        card.className = `gallery-item break-inside-avoid mb-6 group relative rounded-2xl overflow-hidden glass-card border border-white/10 hover:border-accent/60 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-glow-accent`;
+        card.className = "gallery-item break-inside-avoid mb-6 group relative rounded-2xl overflow-hidden glass-card border border-white/10 hover:border-accent/60 transition-all duration-500 shadow-lg hover:shadow-glow-accent";
         card.dataset.category = proj.category;
         card.dataset.id = proj.id;
 
+        const images = (proj.images && proj.images.length > 0) ? proj.images : [proj.image];
+        const hasMultiple = images.length > 1;
+
         // Tags das ferramentas
         const toolsHtml = proj.tools
-          .map(t => `<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-black/60 text-white/90 border border-white/10">${t}</span>`)
+          .map(t => `<span class="text-[10px] font-mono font-light px-2 py-0.5 rounded bg-black/60 text-white/90 border border-white/10">${t}</span>`)
           .join("");
 
-        card.innerHTML = `
-          <!-- Imagem com Proporção Natural e Zoom Suave -->
-          <div class="relative w-full ${proj.aspect} overflow-hidden bg-surfaceDark">
-            <img src="${proj.image}" 
-                 alt="${proj.title}" 
-                 loading="lazy" 
-                 class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-            
-            <!-- Gradiente de Sobreposição -->
-            <div class="absolute inset-0 bg-gradient-to-t from-bgDark/95 via-bgDark/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300"></div>
+        // Slides do carrossel (com loading="lazy" em todos os slides após o primeiro)
+        const slidesHtml = images.map((imgSrc, slideIdx) => `
+          <div class="carousel-slide flex-shrink-0 w-full h-full snap-start relative overflow-hidden" data-slide-index="${slideIdx}" style="scroll-snap-align: start;">
+            <img src="${imgSrc}" 
+                 alt="${proj.title} - Imagem ${slideIdx + 1}" 
+                 loading="${(cardIdx < 2 && slideIdx === 0) ? 'eager' : 'lazy'}" 
+                 class="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105">
+          </div>
+        `).join("");
 
-            <!-- Botão Flutuante de Expansão (Aparece no Hover) -->
-            <div class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-75 transition-all duration-300 hover:bg-accent hover:border-accent">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+        // Controles de navegação (exibidos apenas se houver mais de uma imagem)
+        let controlsHtml = "";
+        if (hasMultiple) {
+          controlsHtml = `
+            <!-- Indicador de Slide (Pill com Contador discreto) -->
+            <div class="carousel-indicator-badge absolute top-3 left-3 z-20 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-white/95 text-[11px] font-mono font-light flex items-center gap-1.5 shadow-md">
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-accent"></i>
+              <span class="carousel-counter-text">1 / ${images.length}</span>
             </div>
 
-            <!-- Informações no Card -->
-            <div class="absolute bottom-0 inset-x-0 p-5 flex flex-col justify-end">
+            <!-- Indicadores de Pontos (Dots discretos na base do carrossel) -->
+            <div class="carousel-dots-container absolute bottom-28 sm:bottom-32 inset-x-0 z-20 flex items-center justify-center gap-1.5 pointer-events-none">
+              ${images.map((_, i) => `<span class="carousel-dot h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-accent w-4' : 'bg-white/40 w-1.5'}"></span>`).join("")}
+            </div>
+
+            <!-- Botão Slide Anterior (Mínimo 44x44px área de toque, visível no mobile) -->
+            <button class="carousel-nav-btn carousel-prev-btn absolute left-2 top-1/2 -translate-y-1/2 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-black/65 text-white border border-white/20 backdrop-blur-md shadow-lg opacity-90 md:opacity-0 md:group-hover:opacity-100 hover:bg-accent hover:border-accent active:scale-90 transition-all duration-200" aria-label="Imagem anterior">
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Botão Próximo Slide (Mínimo 44x44px área de toque, visível no mobile) -->
+            <button class="carousel-nav-btn carousel-next-btn absolute right-2 top-1/2 -translate-y-1/2 z-20 w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-black/65 text-white border border-white/20 backdrop-blur-md shadow-lg opacity-90 md:opacity-0 md:group-hover:opacity-100 hover:bg-accent hover:border-accent active:scale-90 transition-all duration-200" aria-label="Próxima imagem">
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+          `;
+        }
+
+        card.innerHTML = `
+          <!-- Container do Carrossel com Proporção Fixa (Zero Layout Shift) -->
+          <div class="carousel-container relative w-full ${proj.aspect} overflow-hidden bg-surfaceDark select-none">
+            
+            <!-- Trilho com Scroll-Snap e Touch-Pan-Y (Permite rolagem vertical nativa sem travamentos) -->
+            <div class="carousel-track flex w-full h-full overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-y no-scrollbar" style="scroll-snap-type: x mandatory; touch-action: pan-y; -webkit-overflow-scrolling: touch;">
+              ${slidesHtml}
+            </div>
+
+            <!-- Gradiente de Sobreposição -->
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-bgDark/95 via-bgDark/30 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 z-10"></div>
+
+            <!-- Controles do Carrossel -->
+            ${controlsHtml}
+
+            <!-- Botão Flutuante de Expansão (Abre Modal Lightbox) -->
+            <button class="expand-modal-btn absolute top-3 right-3 z-20 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 hover:bg-accent hover:border-accent" aria-label="Expandir projeto">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+            </button>
+
+            <!-- Informações do Card -->
+            <div class="project-info-box absolute bottom-0 inset-x-0 p-5 flex flex-col justify-end z-20 cursor-pointer">
               <div class="flex items-center justify-between mb-2">
-                <span class="text-[11px] font-mono uppercase tracking-wider text-accent font-semibold flex items-center gap-1.5">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-accent font-light flex items-center gap-1.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
                   ${proj.categoryLabel}
                 </span>
-                <span class="text-[11px] font-mono text-textMuted">${proj.year}</span>
+                <span class="text-[11px] font-mono text-textMuted font-light">${proj.year}</span>
               </div>
 
-              <h3 class="font-display font-bold text-lg sm:text-xl text-white group-hover:text-accent transition-colors line-clamp-2">
+              <h3 class="font-display font-light text-lg sm:text-xl text-white group-hover:text-accent transition-colors line-clamp-2">
                 ${proj.title}
               </h3>
 
-              <p class="text-xs text-textSecondary font-sans mt-1 line-clamp-1">
+              <p class="text-xs text-textSecondary font-light mt-1 line-clamp-1">
                 ${proj.client}
               </p>
 
-              <!-- Tags das Ferramentas (Micro-interação de reveal) -->
+              <!-- Tags das Ferramentas -->
               <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/10 opacity-80 group-hover:opacity-100 transition-opacity">
                 ${toolsHtml}
               </div>
@@ -1224,9 +1347,111 @@
           </div>
         `;
 
-        // Abrir Modal ao Clicar
-        card.addEventListener("click", () => {
-          openModal(proj.id);
+        // ==========================================
+        // ESTADO INDEPENDENTE DESTE CARROSSEL
+        // ==========================================
+        const track = card.querySelector(".carousel-track");
+        const prevBtn = card.querySelector(".carousel-prev-btn");
+        const nextBtn = card.querySelector(".carousel-next-btn");
+        const counterText = card.querySelector(".carousel-counter-text");
+        const dots = card.querySelectorAll(".carousel-dot");
+        const expandBtn = card.querySelector(".expand-modal-btn");
+        const infoBox = card.querySelector(".project-info-box");
+
+        let currentSlideIdx = 0;
+        const totalSlides = images.length;
+
+        function updateCardIndicators(index) {
+          currentSlideIdx = index;
+          if (counterText) {
+            counterText.textContent = `${index + 1} / ${totalSlides}`;
+          }
+          dots.forEach((dot, dIdx) => {
+            if (dIdx === index) {
+              dot.className = "carousel-dot h-1.5 rounded-full bg-accent w-4 transition-all duration-300";
+            } else {
+              dot.className = "carousel-dot h-1.5 rounded-full bg-white/40 w-1.5 transition-all duration-300";
+            }
+          });
+        }
+
+        if (hasMultiple) {
+          // Atualização reativa de índice ao rolar (Touch ou clique) com throttle via requestAnimationFrame
+          let rafId = null;
+          track.addEventListener("scroll", () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+              const width = track.clientWidth;
+              if (width > 0) {
+                const detectedIdx = Math.round(track.scrollLeft / width);
+                if (detectedIdx >= 0 && detectedIdx < totalSlides && detectedIdx !== currentSlideIdx) {
+                  updateCardIndicators(detectedIdx);
+                }
+              }
+            });
+          }, { passive: true });
+
+          // Botão Próximo
+          if (nextBtn) {
+            nextBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              const width = track.clientWidth;
+              const target = (currentSlideIdx + 1) % totalSlides;
+              track.scrollTo({ left: target * width, behavior: "smooth" });
+              updateCardIndicators(target);
+            });
+          }
+
+          // Botão Anterior
+          if (prevBtn) {
+            prevBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              const width = track.clientWidth;
+              const target = (currentSlideIdx - 1 + totalSlides) % totalSlides;
+              track.scrollTo({ left: target * width, behavior: "smooth" });
+              updateCardIndicators(target);
+            });
+          }
+        }
+
+        // ==========================================
+        // ABERTURA INTELIGENTE DO MODAL LIGHTBOX
+        // ==========================================
+        // 1. Clique no botão de expansão
+        expandBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openModal(proj.id, currentSlideIdx);
+        });
+
+        // 2. Clique no box de informações do rodapé
+        infoBox.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openModal(proj.id, currentSlideIdx);
+        });
+
+        // 3. Toque/clique na imagem sem arrastar (distinção entre swipe e tap)
+        let pointerDownX = 0;
+        let pointerDownY = 0;
+        let isDragging = false;
+
+        track.addEventListener("pointerdown", (e) => {
+          pointerDownX = e.clientX;
+          pointerDownY = e.clientY;
+          isDragging = false;
+        });
+
+        track.addEventListener("pointermove", (e) => {
+          if (Math.abs(e.clientX - pointerDownX) > 10 || Math.abs(e.clientY - pointerDownY) > 10) {
+            isDragging = true;
+          }
+        });
+
+        track.addEventListener("pointerup", (e) => {
+          if (!isDragging && !e.target.closest(".carousel-nav-btn") && !e.target.closest(".expand-modal-btn")) {
+            openModal(proj.id, currentSlideIdx);
+          }
         });
 
         container.appendChild(card);
@@ -1235,9 +1460,8 @@
       // Recria ícones Lucide nos novos elementos inseridos
       lucide.createIcons();
 
-      // Atualiza o contador de projetos
-      const countEl = document.getElementById("project-count");
-      if (countEl) countEl.textContent = projects.length;
+      // Atualiza os contadores
+      updateFilterCounts();
     }
 
     /**
@@ -1281,7 +1505,7 @@
     }
 
     /**
-     * Sistema de Modal / Lightbox em Tela Cheia
+     * Sistema de Modal / Lightbox em Tela Cheia com Suporte a Múltiplas Imagens
      */
     function setupModal() {
       const modal = document.getElementById("project-modal");
@@ -1289,12 +1513,14 @@
       const closeBtn = document.getElementById("modal-close-btn");
       const prevBtn = document.getElementById("modal-prev-btn");
       const nextBtn = document.getElementById("modal-next-btn");
+      const subPrevBtn = document.getElementById("modal-sub-prev-btn");
+      const subNextBtn = document.getElementById("modal-sub-next-btn");
 
       // Fechar ao clicar no backdrop ou botão X
       backdrop.addEventListener("click", closeModal);
       closeBtn.addEventListener("click", closeModal);
 
-      // Navegação Anterior e Próximo
+      // Navegação entre projetos
       prevBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         navigateModal(-1);
@@ -1305,21 +1531,53 @@
         navigateModal(1);
       });
 
-      // Navegação por Teclado (Esc, Setas Esquerda/Direita)
+      // Navegação entre imagens do mesmo projeto dentro do modal
+      if (subPrevBtn) {
+        subPrevBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          navigateModalSubImage(-1);
+        });
+      }
+
+      if (subNextBtn) {
+        subNextBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          navigateModalSubImage(1);
+        });
+      }
+
+      // Atalhos de teclado (Esc, Setas)
       window.addEventListener("keydown", (e) => {
         if (modal.classList.contains("hidden")) return;
 
         if (e.key === "Escape") closeModal();
-        if (e.key === "ArrowLeft") navigateModal(-1);
-        if (e.key === "ArrowRight") navigateModal(1);
+        if (e.key === "ArrowLeft") {
+          const proj = currentFilteredProjects[currentModalIndex];
+          const images = (proj && proj.images) ? proj.images : [proj?.image];
+          if (images.length > 1) {
+            navigateModalSubImage(-1);
+          } else {
+            navigateModal(-1);
+          }
+        }
+        if (e.key === "ArrowRight") {
+          const proj = currentFilteredProjects[currentModalIndex];
+          const images = (proj && proj.images) ? proj.images : [proj?.image];
+          if (images.length > 1) {
+            navigateModalSubImage(1);
+          } else {
+            navigateModal(1);
+          }
+        }
       });
     }
 
-    function openModal(projectId) {
+    function openModal(projectId, initialSlideIdx = 0) {
       const index = currentFilteredProjects.findIndex(p => p.id === projectId);
       if (index === -1) return;
 
       currentModalIndex = index;
+      currentModalSubIndex = initialSlideIdx || 0;
       updateModalContent();
 
       const modal = document.getElementById("project-modal");
@@ -1345,14 +1603,44 @@
         currentModalIndex = 0;
       }
 
+      currentModalSubIndex = 0;
       updateModalContent();
+    }
+
+    function navigateModalSubImage(direction) {
+      const proj = currentFilteredProjects[currentModalIndex];
+      if (!proj) return;
+      const images = (proj.images && proj.images.length > 0) ? proj.images : [proj.image];
+      currentModalSubIndex = (currentModalSubIndex + direction + images.length) % images.length;
+      updateModalSubImageOnly();
+    }
+
+    function updateModalSubImageOnly() {
+      const proj = currentFilteredProjects[currentModalIndex];
+      if (!proj) return;
+      const images = (proj.images && proj.images.length > 0) ? proj.images : [proj.image];
+      const img = document.getElementById("modal-image");
+      const subIndicator = document.getElementById("modal-sub-indicator");
+
+      img.style.opacity = "0";
+      setTimeout(() => {
+        img.src = images[currentModalSubIndex] || images[0];
+        img.alt = `${proj.title} - ${currentModalSubIndex + 1}`;
+        img.style.opacity = "1";
+      }, 150);
+
+      if (subIndicator && images.length > 1) {
+        subIndicator.textContent = `${currentModalSubIndex + 1} / ${images.length}`;
+      }
     }
 
     function updateModalContent() {
       const proj = currentFilteredProjects[currentModalIndex];
       if (!proj) return;
 
-      const img = document.getElementById("modal-image");
+      const images = (proj.images && proj.images.length > 0) ? proj.images : [proj.image];
+      if (currentModalSubIndex >= images.length) currentModalSubIndex = 0;
+
       const title = document.getElementById("modal-title");
       const category = document.getElementById("modal-category");
       const client = document.getElementById("modal-client");
@@ -1361,14 +1649,22 @@
       const tools = document.getElementById("modal-tools");
       const counter = document.getElementById("modal-counter");
       const ctaBtn = document.getElementById("modal-cta-btn");
+      const subPrevBtn = document.getElementById("modal-sub-prev-btn");
+      const subNextBtn = document.getElementById("modal-sub-next-btn");
+      const subIndicator = document.getElementById("modal-sub-indicator");
 
-      // Transição suave na imagem
-      img.style.opacity = "0";
-      setTimeout(() => {
-        img.src = proj.image;
-        img.alt = proj.title;
-        img.style.opacity = "1";
-      }, 150);
+      updateModalSubImageOnly();
+
+      // Configura visibilidade dos controles de sub-imagem no modal
+      if (images.length > 1) {
+        if (subPrevBtn) subPrevBtn.classList.remove("hidden");
+        if (subNextBtn) subNextBtn.classList.remove("hidden");
+        if (subIndicator) subIndicator.classList.remove("hidden");
+      } else {
+        if (subPrevBtn) subPrevBtn.classList.add("hidden");
+        if (subNextBtn) subNextBtn.classList.add("hidden");
+        if (subIndicator) subIndicator.classList.add("hidden");
+      }
 
       title.textContent = proj.title;
       category.textContent = proj.categoryLabel;
@@ -1379,15 +1675,17 @@
 
       // Monta tags de ferramentas
       tools.innerHTML = proj.tools.map(tool => `
-        <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white flex items-center gap-1.5">
+        <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono font-light text-white flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
           ${tool}
         </span>
       `).join("");
 
-      // Configura o botão do WhatsApp com mensagem contextualizada do projeto
+      // Configura o botão do WhatsApp com mensagem contextualizada
       const msg = encodeURIComponent(`Olá Marcelo! Vi o projeto "${proj.title}" no seu portfólio e gostaria de um orçamento para algo similar.`);
       ctaBtn.href = `https://wa.me/5531987357432?text=${msg}`;
+
+      lucide.createIcons();
     }
 
     /**
